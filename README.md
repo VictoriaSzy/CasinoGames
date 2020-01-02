@@ -32,5 +32,5 @@ Topics covered in class:
 1/8: Finish the homepage of the casino (Theodore) and make structs and simple print function for cards in blackjack (Victoria)    </br>
 1/12: Finish Blackjack shuffle, display, and hit methods (Victoria) and freeing along with main function for testing (Theodore)    </br>
 1/13: Finish the roulette  (Theodore)    </br>
-1/14: Finish the slot machines and add the highscores (Theodore)    </br>
+1/14: Finish the slot machines (Theodore) and add the highscores (Victoria)   </br>
 1/15: Final check and run through to ensure our project functions to its maximum ability (Victoria & Theodore)  ~ if time remains, we will try to include networking for multiplayer blackjack    </br>
