@@ -2,7 +2,7 @@
 Team Members: Victoria Szymanowski & Theodore Wu    </br>
 Systems Period 10    </br>
 ## Higher-level Description: 
-We will make blackjack and some additional games (such as roulette, slot machines, bingo, or poker) that the user can play.    </br>
+We will make blackjack and some additional games (such as roulette and slot machines) that the user can play.    </br>
 ## Description of User Interface:
 When the user enters make run, they will be taken to the home screen where we will have some decorations and the option to choose a game to play. The user can choose a game by entering the name of the game (or possibly a shortcut that we have not decided on yet). They will then be taken to a new screen where the game will appear. 
 #### BLACKJACK: 
