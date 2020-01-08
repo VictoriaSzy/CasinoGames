@@ -34,3 +34,12 @@ Topics covered in class:
 1/13: Finish the roulette  (Theodore)    </br>
 1/14: Finish the slot machines (Theodore) and add the highscores (Victoria)   </br>
 1/15: Final check and run through to ensure our project functions to its maximum ability (Victoria & Theodore)  ~ if time remains, we will try to include networking for multiplayer blackjack    </br>
+
+
+## DevLogs:
+:goat: - Victoria's doing<br/>
+:squirrel: - Theodore's doing<br/>
+:boat: - Theodore's and Victoria's doing<br/>
+
+### 1/7/2020
+:goat: I started working on the blackjack function and header files. I created the structs for a card, a deck, and a player. I'm trying out typedef structs so I won't have to rewrite struct for the functions that have structs as return types. I also wrote a function that prints out a card. This print function is currently for testing purposes to see whether the cards chosen won't be repeated. Later, we'll display the cards in a nicer way. <br/>
