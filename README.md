@@ -43,3 +43,4 @@ Topics covered in class:
 
 ### 1/7/2020
 :goat: I started working on the blackjack function and header files. I created the structs for a card, a deck, and a player. I'm trying out typedef structs so I won't have to rewrite struct for the functions that have structs as return types. I also wrote a function that prints out a card. This print function is currently for testing purposes to see whether the cards chosen won't be repeated. Later, we'll display the cards in a nicer way. <br/>
+:squirrel: I started on the main casino homepage. <br/>
