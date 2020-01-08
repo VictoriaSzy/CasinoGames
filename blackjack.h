@@ -15,7 +15,7 @@ typedef struct Deck {
   struct Deck * next ; // similar to linked list so we want the next card
 } deck ;
 
-// this is the struct for the player - we'll keep track of their hand like this
+// this is the struct for the player/dealer - we'll keep track of their hand like this
 typedef struct {
   deck * hand ; // we'll know the exact cards the player has
   int min ; // the smallest sum of the player's cards
