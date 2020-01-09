@@ -5,10 +5,8 @@
 #define QUEEN 12
 #define KING 13
 
-card deck [] ; // this will be the deck of cards used for the game
-
 // ~~~~~~~~~~~~~~~~ FUNCTIONS FOR SHUFFLING ~~~~~~~~~~~~~~~~
-deck * split(deck * d) {
+/*deck * split(deck * d) {
   int r = rand() % 52 ;
   int i ;
   deck * d1 = d ;
@@ -59,7 +57,7 @@ deck * shuffle(deck * d) {
     d = mix(d) ;
   }
   return d ;
-}
+}*/
 
 // ~~~~~~~~~~~~~~~~ PRINTING FUNCTIONS ~~~~~~~~~~~~~~~~
 void printCard(card * c) {
@@ -87,15 +85,15 @@ void printCard(card * c) {
 }
 
 void printDeck(deck * d) {
-  while (d != NULL) {
-    print_card(d->c) ;
+  int i ;
+  for (i = 0 ; i < 52; i++) {
+    print_card(d[i]) ;
     printf(" ") ;
-    d = d->next ;
   }
 }
 
 int main() {
-  deck * d ; // this will be our deck
+  card deck [] ; // this will be the deck of cards used for the game
   // here are our 2 players for the moment
   player p ;
   player dealer ;
