@@ -9,11 +9,15 @@ typedef struct {
   int value ; // A will be worth either 1 or 11 and the face cards (J, Q, K) will be worth 10
 } card ;
 
+typedef struct {
+  card cards [52] ;
+  int cardsInDeck ;
+} deck ;
+
 // this is the struct for the player/dealer - we'll keep track of their hand like this
 typedef struct {
-  card [] hand ; // we'll know the exact cards the player has
-  int min ; // the smallest sum of the player's cards
-  int max ; // the largest sum of the player's cards
+  card hand [52] ; // we'll know the exact cards the player has
+  int sum ; // the sum of the player's cards
 } player ;
 
 // Here are the functions:
