@@ -4,11 +4,11 @@ else
 	CC = gcc
 endif
 
-all blackjack.o main.o:
+all: blackjack.o main.o
 	$(CC) -o program main.o
 
 blackjack.o: blackjack.c blackjack.h
-	$(CC) -c .c
+	$(CC) -c blackjack.c
 main.o: main.c main.h
 	$(CC) -c main.c
 run:
