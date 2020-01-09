@@ -9,15 +9,13 @@ typedef struct {
   int value ; // A will be worth either 1 or 11 and the face cards (J, Q, K) will be worth 10
 } card ;
 
-// this is the struct for the deck of cards being used to play blackjack
-typedef struct Deck {
-  card * c ; // a deck needs 52 cards
-  struct Deck * next ; // similar to linked list so we want the next card
-} deck ;
-
 // this is the struct for the player/dealer - we'll keep track of their hand like this
 typedef struct {
-  deck * hand ; // we'll know the exact cards the player has
+  card [] hand ; // we'll know the exact cards the player has
   int min ; // the smallest sum of the player's cards
   int max ; // the largest sum of the player's cards
 } player ;
+
+// Here are the functions:
+deck * split(deck * d) ;
+deck * mix(deck * d) ;
