@@ -17,5 +17,7 @@ typedef struct {
 } player ;
 
 // Here are the functions:
-deck * split(deck * d) ;
-deck * mix(deck * d) ;
+/*deck * split(deck * d) ;
+deck * mix(deck * d) ;*/
+void printCard(card * c) ;
+void printDeck(deck * d) ;
