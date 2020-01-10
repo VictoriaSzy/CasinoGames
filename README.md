@@ -44,3 +44,9 @@ Topics covered in class:
 ### 1/7/2020
 :goat: I started working on the blackjack function and header files. I created the structs for a card, a deck, and a player. I'm trying out typedef structs so I won't have to rewrite struct for the functions that have structs as return types. I also wrote a function that prints out a card. This print function is currently for testing purposes to see whether the cards chosen won't be repeated. Later, we'll display the cards in a nicer way. <br/>
 :squirrel: I started on the main casino homepage. <br/>
+### 1/8/2020
+:goat: I attempted to write shuffle by using helper functions that would mix up the cards and then got it to work by using the next card in each deck. I also updated the printDeck function.
+:squirrel: Added more print statements for the main screen so the user can enter input.
+### 1/9/2020
+:goat: I merged my edits to the master branch. I worked with changing the structs and adding a new struct for deck which will have an array now, so we're not really using the next and pointers.
+:boat: We researched which library to use and are deciding between graphics.c, SDL, and possibly termbox (which we're not really sure about).
