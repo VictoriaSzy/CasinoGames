@@ -1,5 +1,3 @@
-
-
 #include "networking.h"
 
 void error_check( int i, char *s ) {
@@ -52,7 +50,6 @@ int server_setup() {
 /*=========================
   server_connect
   args: int sd
-
   sd should refer to a socket in the listening state
   run the accept call
   returns the socket descriptor for the new socket connected
