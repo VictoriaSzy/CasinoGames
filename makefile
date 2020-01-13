@@ -5,7 +5,7 @@ else
 endif
 
 all: blackjack.o main.o
-	$(CC) -o program main.o
+	$(CC) main.o -o program -I include -L lib -l SDL2-2.0.10
 
 blackjack.o: blackjack.c blackjack.h
 	$(CC) -c blackjack.c
