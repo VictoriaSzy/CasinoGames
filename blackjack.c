@@ -66,6 +66,8 @@ deck * shuffle(deck * d) {
   return d ;
 }*/
 
+
+
 // ~~~~~~~~~~~~~~~~ PRINTING FUNCTIONS ~~~~~~~~~~~~~~~~
 void printCard(card * c) {
   // We start with printing the value
