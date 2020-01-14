@@ -17,6 +17,22 @@ int main(int argc, char const *argv[]) {
         SDL_WINDOW_OPENGL                  // flags - see below
     );
 
+    if (window == NULL) {
+        // In the case that the window could not be made...
+        printf("Could not create window: %s\n", SDL_GetError());
+        return 1;
+    }
+
+    // The window is open: could enter program loop here (see SDL_PollEvent())
+
+    SDL_Delay(3000);  // Pause execution for 3000 milliseconds, for example
+
+    // Close and destroy the window
+    SDL_DestroyWindow(window);
+
+    // Clean up
+    SDL_Quit();
+
     //wait(10);
 	////////// other things
 	/*
@@ -49,4 +65,4 @@ int main(int argc, char const *argv[]) {
 		*strchr(command, '\n') = '\0';
 	}*/
 	return 0;
-	}
+}
