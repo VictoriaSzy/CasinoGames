@@ -5,7 +5,7 @@ else
 endif
 
 ifeq ($(MAC_OS), true)
-	CC = gcc -mcmodel=medium 
+	CC = gcc
 else
 	CC = gcc -mcmodel=medium -Wl,--image-base -Wl,0x10000000
 endif
@@ -15,8 +15,10 @@ all: blackjack.o main.o
 
 blackjack.o: blackjack.c blackjack.h
 	$(CC) -c blackjack.c
+
 main.o: main.c main.h
 	$(CC) -c main.c
+
 run:
 	./program
 
