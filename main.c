@@ -1,27 +1,23 @@
 #include "main.h"
-#include <SDL2/SDL.h>
-#include <stdio.h>
 
 int main(int argc, char const *argv[]) {
-	printf("Initializing SDL.\n");
+	//SDL_SetMainReady();
 
-	/* Initialize defaults, Video and Audio */
-	if((SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO)==-1)) {
-			printf("Could not initialize SDL: %s.\n", SDL_GetError());
-			exit(-1);
-	}
+	printf("UHH idk\n");
+	SDL_Window * window;                    // Declare a pointer
 
-	printf("SDL initialized.\n");
+    SDL_Init(SDL_INIT_VIDEO); 
 
-	printf("Quiting SDL.\n");
+    window = SDL_CreateWindow(
+        "An SDL2 window",                  // window title
+        SDL_WINDOWPOS_UNDEFINED,           // initial x position
+        SDL_WINDOWPOS_UNDEFINED,           // initial y position
+        640,                               // width, in pixels
+        480,                               // height, in pixels
+        SDL_WINDOW_OPENGL                  // flags - see below
+    );
 
-	/* Shutdown all subsystems */
-	SDL_Quit();
-
-	printf("Quiting....\n");
-
-	exit(0);
-
+    //wait(10);
 	////////// other things
 	/*
 	printf("Welcome to the casino!!\n");

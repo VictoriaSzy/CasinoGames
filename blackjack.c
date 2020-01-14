@@ -1,7 +1,6 @@
 #include "blackjack.h"
 //Using SDL and standard IO
-#include <SDL.h>
-#include <stdio.h>
+//#include <SDL.h>
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -96,13 +95,13 @@ void printCard(card * c) {
 void printDeck(deck * d) {
   int i ;
   for (i = 0 ; i < (d->cardsInDeck) ; i++) {
-    print_card((d->cards)[i]) ;
+    //printCard(d->cards[i]) ;
     printf(" ") ;
   }
 }
 
 int main() {
-  card deck [] ; // this will be the deck of cards used for the game
+  card deck [52] ; // this will be the deck of cards used for the game
   // here are our 2 players for the moment
   player p ;
   player dealer ;

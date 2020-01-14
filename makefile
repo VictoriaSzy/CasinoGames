@@ -5,7 +5,7 @@ else
 endif
 
 all: blackjack.o main.o
-	$(CC) main.o -o program -I include -L lib -l SDL2-2.0.10
+	$(CC) -mcmodel=medium -Wl,--image-base -Wl,0x10000000 -I /usr/include/SDL2  -o program main.o -lSDL2
 
 blackjack.o: blackjack.c blackjack.h
 	$(CC) -c blackjack.c
