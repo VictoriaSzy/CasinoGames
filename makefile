@@ -4,8 +4,14 @@ else
 	CC = gcc
 endif
 
+ifeq ($(MAC_OS), true)
+	CC = gcc -mcmodel=medium 
+else
+	CC = gcc -mcmodel=medium -Wl,--image-base -Wl,0x10000000
+endif
+
 all: blackjack.o main.o
-	$(CC) -mcmodel=medium -Wl,--image-base -Wl,0x10000000 -I /usr/include/SDL2  -o program main.o -lSDL2
+	$(CC) -I /usr/include/SDL2  -o program main.o -lSDL2
 
 blackjack.o: blackjack.c blackjack.h
 	$(CC) -c blackjack.c
