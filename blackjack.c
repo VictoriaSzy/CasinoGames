@@ -7,9 +7,21 @@ const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
 #define ACE 1
-#define JACK 11
-#define QUEEN 12
-#define KING 13
+#define JACK 10
+#define QUEEN 10
+#define KING 10
+
+// ~~~~~~~~~~~~~~~~ SUM FUNCTION ~~~~~~~~~~~~~~~~
+
+int find_sum(card hand [50]) {
+  int x ;
+  int sum = 0 ;
+  for (x = 0 ; hand[x] != NULL && x < 50 ; x++) {
+    card * c = hand[x] ;
+    sum += c->value ;
+  }
+  return sum ;
+}
 
 // ~~~~~~~~~~~~~~~~ FUNCTIONS FOR SHUFFLING ~~~~~~~~~~~~~~~~
 
@@ -19,7 +31,7 @@ void shuffle(deck * d) {
 		x = rand() % 52 ;
 		y = rand() % 52 ;
 
-		card tmp = d->cards[x] ;
+		card * tmp = d->cards[x] ;
 		d->cards[x] = d->cards[y] ;
 		d->cards[y] = tmp ;
 	}
@@ -27,7 +39,7 @@ void shuffle(deck * d) {
 
 void hit(player * p) {
   if (player->sum > 21) {
-    printf("You cannot hit because you are over 21! You have busted!\n", );
+    printf("You cannot hit because you are over 21! You have busted!\n") ;
   }
 }
 
@@ -67,11 +79,70 @@ void printDeck(deck * d) {
 }
 
 int main() {
-  card deck [52] ; // this will be the deck of cards used for the game
-  // here are our 2 players for the moment
-  player p ;
-  player dealer ;
-  char response [100] ; // this will be used to hold the player's response to their options
+  deck * d ; // we are creating the deck
+  card * c ;
+	int suit, x;
+	// this first for loop adds the heart cards
+	for (x = 0 ; x < 13 ; x++) {
+		c->suit = 0 ;
+		if (x < 10) c->value = x + 1 ;
+		else {
+			c->value = 10 ;
+		}
+		d->cards[x] = c ;
+	}
+	// this for loop adds the clubs
+	for (x = 13 ; x < 26 ; x++) {
+		c->suit = 1 ;
+		if (x < 10) c->value = x + 1 ;
+		else {
+			c->value = 10 ;
+		}
+		d->cards[x] = c ;
+	}
+	// this for loop adds the diamonds
+	for (x = 26 ; x < 39 ; x++) {
+		c->suit = 2 ;
+		if (x < 10) c->value = x + 1 ;
+		else {
+			c->value = 10 ;
+		}
+		d->cards[x] = c ;
+	}
+	// this for loop adds the spades
+	for (x = 39 ; x < 52 ; x++) {
+		c->suit = 3 ;
+		if (x < 10) c->value = x + 1 ;
+		else {
+			c->value = 10 ;
+		}
+		d->cards[x] = c ;
+	}
+  shuffle(d) ;
+	d->cardsInDeck = 52 ;
+	// now onto the player
+	player * p ;
+	p->hand[0] = d->cards[0] ;
+	p->hand[1] = d->cards[1] ;
+	d->cards[0] = NULL ;
+	d->cards[1] = NULL ;
+	d->cardsInDeck = 50 ; // so the next card in the deck would be 52 - cardsInDeck
+	p->sum = find_sum(p->hand) ;
+	player * dealer ; // now onto the dealer
+	dealer->hand[0] = d->cards[2] ;
+	dealer->hand[1] = d->cards[3] ;
+	d->cards[2] = NULL ;
+	d->cards[3] = NULL ;
+	d->cardsInDeck = 48 ;
+  dealer->sum = find_sum(dealer->hand) ;
 
+  printf("The sum of the player's cards is: %d\n", p->sum) ;
+  printf("The sum of the dealer's cards is: %d\n", dealer->sum) ;
+
+
+  char response [100] ; // this will be used to hold the player's response to their options
+  /*while (1) {
+    // let's play a game
+  }*/
   return 0 ;
 }
