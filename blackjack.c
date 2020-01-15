@@ -65,7 +65,7 @@ deck * shuffle(deck * d) {
   return d ;
 }*/
 
-deck * shuffle(card deck [52]) {
+void shuffle(card deck [52]) {
   for (int i = 0; i < 50 ; i++) {
 		int x, y ;
 		x = rand() % 52 ;
