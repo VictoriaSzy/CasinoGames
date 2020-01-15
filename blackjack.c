@@ -65,6 +65,18 @@ deck * shuffle(deck * d) {
   return d ;
 }*/
 
+deck * shuffle(card deck [52]) {
+  for (int i = 0; i < 50 ; i++) {
+		int x, y ;
+		x = rand() % 52 ;
+		y = rand() % 52 ;
+
+		card tmp = deck[x] ;
+		deck[x] = deck[y] ;
+		deck[y] = tmp ;
+	}
+}
+
 
 
 // ~~~~~~~~~~~~~~~~ PRINTING FUNCTIONS ~~~~~~~~~~~~~~~~
@@ -95,7 +107,7 @@ void printCard(card * c) {
 void printDeck(deck * d) {
   int i ;
   for (i = 0 ; i < (d->cardsInDeck) ; i++) {
-    //printCard(d->cards[i]) ;
+    printCard(d->cards[i]) ;
     printf(" ") ;
   }
 }
