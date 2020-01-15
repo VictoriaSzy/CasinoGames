@@ -11,7 +11,7 @@ const int SCREEN_HEIGHT = 480;
 #define QUEEN 10
 #define KING 10
 
-// ~~~~~~~~~~~~~~~~ SUM FUNCTION ~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~ SUM & ACTION FUNCTIONS ~~~~~~~~~~~~~~~~
 
 int find_sum(card hand [50]) {
   int x ;
@@ -26,7 +26,7 @@ int find_sum(card hand [50]) {
 // ~~~~~~~~~~~~~~~~ FUNCTIONS FOR SHUFFLING ~~~~~~~~~~~~~~~~
 
 void shuffle(deck d) {
-  for (int i = 0; i < 50 ; i++) {
+  for (int i = 0; i < 100 ; i++) {
 		int x, y ;
 		x = rand() % 52 ;
 		y = rand() % 52 ;
