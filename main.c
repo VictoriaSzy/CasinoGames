@@ -11,49 +11,6 @@ SDL_Texture * load_cards_texture(SDL_Renderer * renderer) {
   return cards_texture ;
 }
 
-void new_game() {
-	deck * d ;
-  card c ;
-	int suit, x;
-	// this first for loop adds the heart cards
-	for (x = 0 ; x < 13 ; x++) {
-		c.suit = 0 ;
-		if (x < 10) c.value = x + 1 ;
-		else {
-			c.value = 10 ;
-		}
-		d->cards[x] = c ;
-	}
-	// this for loop adds the clubs
-	for (x = 13 ; x < 26 ; x++) {
-		c.suit = 1 ;
-		if (x < 10) c.value = x + 1 ;
-		else {
-			c.value = 10 ;
-		}
-		d->cards[x] = c ;
-	}
-	// this for loop adds the diamonds
-	for (x = 26 ; x < 39 ; x++) {
-		c.suit = 2 ;
-		if (x < 10) c.value = x + 1 ;
-		else {
-			c.value = 10 ;
-		}
-		d->cards[x] = c ;
-	}
-	// this for loop adds the spades
-	for (x = 39 ; x < 52 ; x++) {
-		c.suit = 3 ;
-		if (x < 10) c.value = x + 1 ;
-		else {
-			c.value = 10 ;
-		}
-		d->cards[x] = c ;
-	}
-  shuffle(d) ;
-}
-
 int main(int argc, char const *argv[]) {
 	//SDL_SetMainReady();
 
