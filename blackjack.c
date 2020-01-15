@@ -62,10 +62,10 @@ void printCard(card c) {
     }
 
     // And now we print out the suit
-    if (c.suit == 0) printf(" of HEARTS") ;
-    else if (c.suit == 2) printf(" of DIAMONDS") ;
-    else if (c.suit == 1) printf(" of CLUBS") ;
-    else if (c.suit == 3) printf(" of SPADES") ;
+    if (c.suit == 0) printf(" of HEARTS\n") ;
+    else if (c.suit == 2) printf(" of DIAMONDS\n") ;
+    else if (c.suit == 1) printf(" of CLUBS\n") ;
+    else if (c.suit == 3) printf(" of SPADES\n") ;
     else {
       // NOT GOOD!
       printf("ERROR WITH IDENTIFYING SUIT OF A CARD!!\n") ;
