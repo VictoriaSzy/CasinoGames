@@ -6,32 +6,49 @@ int main(int argc, char const *argv[]) {
 	printf("UHH idk\n");
 	SDL_Window * window;                    // Declare a pointer
 
-    SDL_Init(SDL_INIT_VIDEO); 
+	SDL_Init(SDL_INIT_VIDEO);
 
-    window = SDL_CreateWindow(
-        "An SDL2 window",                  // window title
-        SDL_WINDOWPOS_UNDEFINED,           // initial x position
-        SDL_WINDOWPOS_UNDEFINED,           // initial y position
-        640,                               // width, in pixels
-        480,                               // height, in pixels
-        SDL_WINDOW_OPENGL                  // flags - see below
-    );
+	window = SDL_CreateWindow(
+		"An SDL2 window",                  // window title
+		SDL_WINDOWPOS_UNDEFINED,           // initial x position
+    SDL_WINDOWPOS_UNDEFINED,           // initial y position
+    640,                               // width, in pixels
+    480,                               // height, in pixels
+		// Suggestion: use full screen width and height
+		// http://lazyfoo.net/tutorials/SDL/02_getting_an_image_on_the_screen/index.php
+    SDL_WINDOW_OPENGL                  // flags - see below
+	);
 
-    if (window == NULL) {
-        // In the case that the window could not be made...
-        printf("Could not create window: %s\n", SDL_GetError());
-        return 1;
+	if (window == NULL) {
+		// In the case that the window could not be made...
+    printf("Could not create window: %s\n", SDL_GetError());
+    return 1;
+	}
+
+	//The surface contained by the window
+	SDL_Surface* gScreenSurface = NULL;
+	gScreenSurface = SDL_GetWindowSurface( window );
+	//The image we will load and show on the screen
+	SDL_Surface* image = NULL;
+
+	//Loading success flag
+	bool success = true;
+
+    //Load splash image
+    image = SDL_LoadBMP( "02_getting_an_image_on_the_screen/hello_world.bmp" );
+    if( image == NULL )
+    {
+        printf( "Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError() );
+        success = false;
     }
 
-    // The window is open: could enter program loop here (see SDL_PollEvent())
 
-    SDL_Delay(3000);  // Pause execution for 3000 milliseconds, for example
-
-    // Close and destroy the window
-    SDL_DestroyWindow(window);
-
-    // Clean up
-    SDL_Quit();
+	// The window is open: could enter program loop here (see SDL_PollEvent())
+	SDL_Delay(3000);  // Pause execution for 3000 milliseconds, for example
+	// Close and destroy the window
+  SDL_DestroyWindow(window);
+	// Clean up
+	SDL_Quit();
 
     //wait(10);
 	////////// other things
