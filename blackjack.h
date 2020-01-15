@@ -5,7 +5,7 @@
 
 // this is the struct for a single card
 typedef struct {
-  int suit ; // either a heart, diamond, club, or spade
+  int suit ; // either a heart (1), club (2), diamond (3), or spade (4)
   int value ; // A will be worth either 1 or 11 and the face cards (J, Q, K) will be worth 10
 } card ;
 
@@ -21,7 +21,5 @@ typedef struct {
 } player ;
 
 // Here are the functions:
-/*deck * split(deck * d) ;
-deck * mix(deck * d) ;*/
 void printCard(card * c) ;
 void printDeck(deck * d) ;

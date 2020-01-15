@@ -12,69 +12,23 @@ const int SCREEN_HEIGHT = 480;
 #define KING 13
 
 // ~~~~~~~~~~~~~~~~ FUNCTIONS FOR SHUFFLING ~~~~~~~~~~~~~~~~
-/*deck * split(deck * d) {
-  int r = rand() % 52 ;
-  int i ;
-  deck * d1 = d ;
-  for (i = 1 ; i < r ; i++) {
-    d = d->next ;
-  }
-  deck * d2 = d->next ;
-  d->next = NULL ;
-  d = d2 ;
-  if (d2 == NULL) d = d1 ;
-  else {
-    while (d2->next != NULL) {
-      d2 = d2->next ;
-    }
-    d2->next = d1 ;
-  }
-  return d ;
-}
 
-deck * mix(deck * d) {
-  deck * d1 = d ;
-  int i ;
-  for (i = 0 ; i < 25 ; i++) {
-    d = d->next ;
-  }
-  deck * d2 = d->next ;
-  d->next = NULL ;
-  d = NULL ;
-  deck * tmp ;
-  while (d1 != NULL) {
-    tmp = d1->next ;
-    d1->next = d ;
-    d = d1 ;
-    d1 = tmp ;
-    if (d2 == NULL) break ;
-    tmp = d2->next ;
-    d2->next = d ;
-    d = d2 ;
-    d2 = tmp ;
-  }
-  return d ;
-}
-
-deck * shuffle(deck * d) {
-  int i ;
-  for (i = 0 ; i < 10 ; i++) {
-    d = split(d) ;
-    d = mix(d) ;
-  }
-  return d ;
-}*/
-
-void shuffle(card deck [52]) {
+void shuffle(deck * d) {
   for (int i = 0; i < 50 ; i++) {
 		int x, y ;
 		x = rand() % 52 ;
 		y = rand() % 52 ;
 
-		card tmp = deck[x] ;
-		deck[x] = deck[y] ;
-		deck[y] = tmp ;
+		card tmp = d->cards[x] ;
+		d->cards[x] = d->cards[y] ;
+		d->cards[y] = tmp ;
 	}
+}
+
+void hit(player * p) {
+  if (player->sum > 21) {
+    printf("You cannot hit because you are over 21! You have busted!\n", );
+  }
 }
 
 

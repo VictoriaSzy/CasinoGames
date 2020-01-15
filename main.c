@@ -1,15 +1,69 @@
 #include "main.h"
 
+SDL_Texture * load_cards_texture(SDL_Renderer * renderer) {
+  SDL_Surface * cards_surface = SDL_LoadBMP("img/cards.bmp") ;
+  if (cards_surface == NULL) {
+    printf("Unable to load image %s! SDL Error: %s\n", "img/cards.bmp", SDL_GetError()) ;
+    exit(EXIT_FAILURE) ;
+  }
+  SDL_Texture * cards_texture = SDL_CreateTextureFromSurface(renderer, cards_surface) ;
+  SDL_FreeSurface(cards_surface) ;
+  return cards_texture ;
+}
+
+void new_game() {
+	deck * d ;
+  card c ;
+	int suit, x;
+	// this first for loop adds the heart cards
+	for (x = 0 ; x < 13 ; x++) {
+		c.suit = 0 ;
+		if (x < 10) c.value = x + 1 ;
+		else {
+			c.value = 10 ;
+		}
+		d->cards[x] = c ;
+	}
+	// this for loop adds the clubs
+	for (x = 13 ; x < 26 ; x++) {
+		c.suit = 1 ;
+		if (x < 10) c.value = x + 1 ;
+		else {
+			c.value = 10 ;
+		}
+		d->cards[x] = c ;
+	}
+	// this for loop adds the diamonds
+	for (x = 26 ; x < 39 ; x++) {
+		c.suit = 2 ;
+		if (x < 10) c.value = x + 1 ;
+		else {
+			c.value = 10 ;
+		}
+		d->cards[x] = c ;
+	}
+	// this for loop adds the spades
+	for (x = 39 ; x < 52 ; x++) {
+		c.suit = 3 ;
+		if (x < 10) c.value = x + 1 ;
+		else {
+			c.value = 10 ;
+		}
+		d->cards[x] = c ;
+	}
+  shuffle(d) ;
+}
+
 int main(int argc, char const *argv[]) {
 	//SDL_SetMainReady();
 
-	printf("UHH idk\n");
+	printf("Let's get started!\n") ;
 	SDL_Window * window;                    // Declare a pointer
 
 	SDL_Init(SDL_INIT_VIDEO);
 
 	window = SDL_CreateWindow(
-		"An SDL2 window",                  // window title
+		"Games",                  // window title
 		SDL_WINDOWPOS_UNDEFINED,           // initial x position
     SDL_WINDOWPOS_UNDEFINED,           // initial y position
     640,                               // width, in pixels
@@ -31,20 +85,19 @@ int main(int argc, char const *argv[]) {
 	//The image we will load and show on the screen
 	SDL_Surface* image = NULL;
 
-	//Loading success flag
-	bool success = true;
+	/*
+	bool success = true; //Loading success flag
+	//Load splash image
+  image = SDL_LoadBMP( "02_getting_an_image_on_the_screen/hello_world.bmp" );
+	if( image == NULL ) {
+		printf( "Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError() );
+    success = false;
+	}*/
 
-    //Load splash image
-    image = SDL_LoadBMP( "02_getting_an_image_on_the_screen/hello_world.bmp" );
-    if( image == NULL )
-    {
-        printf( "Unable to load image %s! SDL Error: %s\n", "02_getting_an_image_on_the_screen/hello_world.bmp", SDL_GetError() );
-        success = false;
-    }
 
 
 	// The window is open: could enter program loop here (see SDL_PollEvent())
-	SDL_Delay(3000);  // Pause execution for 3000 milliseconds, for example
+	SDL_Delay(100000);  // Pause execution for 3000 milliseconds, for example
 	// Close and destroy the window
   SDL_DestroyWindow(window);
 	// Clean up
