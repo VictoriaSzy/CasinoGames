@@ -12,13 +12,17 @@
 #include <dirent.h>
 
 #include <math.h>
-
 #include <signal.h>
 
 #define SDL_MAIN_HANDLED
 #include <SDL2/SDL.h>
 
-#define reel 
+#define REEL {'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'}
+typedef struct {
+  char reel1[10] ;
+  char reel2[10] ;
+  char reel3[10] ;
+} slot_machine ;
 
-char * spin(slot * s);
-int is_win(char * sym);
+char * spin(slot_machine * slots) ;
+int is_win(char * sym) ;
