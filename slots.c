@@ -17,20 +17,43 @@ $$$ | x10
 I was thinking we just show the animation of the slot machine in sdl after you type in your bet
 */
 
-char * spin(slot_machine * slots) {
-  return ':' ;
+char * spin(SM * slot_machine) {
+  for (int i = 0; i < 10)
+  return NULL ;
 }
 
 int is_win(char * sym) {
   return 0 ;
 }
 
-int main() {
+int slots_game(int money) {
   printf("It's time to play with the Slot Machines!\n") ;
-  printf("Match two numbers to win the amount you bet.\n") ;
+  printf("Match three numbers to win the amount you bet.\n") ;
   printf("Match all three numbers to win 10 times the amount you bet!\n") ;
   printf("Have fun!\n") ;
 
-  printf("\n\nEnter the amount you want to bet: ") ;
+  SM slot_machine = {{'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'},{'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'},{'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'}};
+  char command[128];
+  int bet;
+	while (strcmp(command, "exit") != 0){
+		system("clear");
+		if (strcmp(command, "play") == 0){
+			spin(&slot_machine);
+		}
+		else if (strcmp(command, "bet") == 0){
+			//play the slot machines
+		}
+		else if (strcmp(command, "help") == 0){
+			printf("\t-play\nType \"play\" to pull the lever on the slot machine\n\t-bet\nType \"bet\" to change your bet\n\t-\n\t-help\n\t-exit\n");
+		}
+		else {
+			printf("You entered: %s\n", command);
+			printf("You did not enter a valid command. Possible commands are: \n\t-play\n\t-bet\n\t-\n\t-help\n\t-exit\n");
+		}
+		printf("Enter your command: ");
+		fgets(command, 1024, stdin);
+		*strchr(command, '\n') = '\0';
+	}
+
   return 0 ;
 }
