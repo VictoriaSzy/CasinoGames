@@ -17,15 +17,9 @@ $$$ | x10
 I was thinking we just show the animation of the slot machine in sdl after you type in your bet
 */
 
-<<<<<<< HEAD
-char spin(slot_machine slots) {
-  int x = rand() % 10 ;
-  strcpy(REEL[x], slots.reel1) ;
-=======
 char * spin(SM * slot_machine) {
   for (int i = 0; i < 10)
   return NULL ;
->>>>>>> 4f76c707f017c90ccfaacb13c50b197d4e9e4976
 }
 
 int is_win(char * sym) {
@@ -37,11 +31,7 @@ int slots_game(int money) {
   printf("Match three numbers to win the amount you bet.\n") ;
   printf("Match all three numbers to win 10 times the amount you bet!\n") ;
   printf("Have fun!\n") ;
-
-<<<<<<< HEAD
-  printf("\n\nEnter the amount you want to bet: ") ;
-  scanf() ;
-=======
+	
   SM slot_machine = {{'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'},{'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'},{'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'}};
   char command[128];
   int bet;
@@ -64,7 +54,5 @@ int slots_game(int money) {
 		fgets(command, 1024, stdin);
 		*strchr(command, '\n') = '\0';
 	}
-
->>>>>>> 4f76c707f017c90ccfaacb13c50b197d4e9e4976
   return 0 ;
 }
