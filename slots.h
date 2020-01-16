@@ -24,10 +24,6 @@ typedef struct {
   char reel3[10] ;
 } SM ;
 
-<<<<<<< HEAD
-char spin(slot_machine slots) ;
-=======
 char * spin(SM * slot_machine) ;
->>>>>>> 4f76c707f017c90ccfaacb13c50b197d4e9e4976
 int is_win(char * sym) ;
 int slots_game(int money);
