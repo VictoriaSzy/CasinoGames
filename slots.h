@@ -27,7 +27,7 @@ typedef struct {
   int p3;
 } SM ;
 
-char * spin(SM * slot_machine) ;
+char * spin(SM * slot_machine, int bet) ;
 int is_win(char * sym) ;
 int slots_game(int money);
 int super_sleep(int milliseconds);

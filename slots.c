@@ -25,7 +25,7 @@ int super_sleep(int milliseconds){
   return nanosleep(&ts, NULL);
 }
 
-char * spin(SM * slm) {
+char * spin(SM * slm, int bet) {
   int v1, v2, v3;
   v1 = 1;//rand() % 4 + 1;
 	v2 = 1;//rand() % 4 + 1;
@@ -40,20 +40,21 @@ char * spin(SM * slm) {
   	system("clear");
   	printf(" SLOT MACHINE       \n");
   	printf("  ___________       \n");
-  	printf(" |           |      \n");
+  	printf(" | $ SLOTS $ |      \n");
   	printf(" |   _____   |      \n");
 
-  	printf(" |  |%c|%c|%c|  | O\n", slm->reel1[(slm->p1+2)%10], slm->reel2[(slm->p2+2)%10], slm->reel3[(slm->p3+2)%10]);
-  	printf(" |  |%c|%c|%c|  | |\n", slm->reel1[(slm->p1+1)%10], slm->reel2[(slm->p2+1)%10], slm->reel3[(slm->p3+1)%10]);
+  	//printf(" |  |%c|%c|%c|  | O\n", slm->reel1[(slm->p1+2)%10], slm->reel2[(slm->p2+2)%10], slm->reel3[(slm->p3+2)%10]);
+  	printf(" |  |%c|%c|%c|  | O\n", slm->reel1[(slm->p1+1)%10], slm->reel2[(slm->p2+1)%10], slm->reel3[(slm->p3+1)%10]);
   	printf(" |->|%c|%c|%c|<-| |\n", slm->reel1[slm->p1], slm->reel2[slm->p2], slm->reel3[slm->p3]);
   	printf(" |  |%c|%c|%c|  | |\n", slm->reel1[slm->p1 == 0 ? 9 : slm->p1-1], slm->reel2[slm->p2 == 0 ? 9 : slm->p2-1], slm->reel3[slm->p3 == 0 ? 9 : slm->p3-1]);
-   	printf(" |  |%c|%c|%c|  | |\n", slm->reel1[slm->p1 == 1 ? 9 : slm->p1-2], slm->reel2[slm->p2 == 1 ? 9 : slm->p2-2], slm->reel3[slm->p3 == 1 ? 9 : slm->p3-2]);
+   	//printf(" |  |%c|%c|%c|  | |\n", slm->reel1[slm->p1 == 1 ? 9 : slm->p1-2], slm->reel2[slm->p2 == 1 ? 9 : slm->p2-2], slm->reel3[slm->p3 == 1 ? 9 : slm->p3-2]);
  	
   	printf(" |===========|=#      \n");
+  	printf(" |Betting: $%i        \n", bet);
   	slm->p1 += v1; slm->p1 = slm->p1 % 10;
   	slm->p2 += v2; slm->p2 = slm->p2 % 10;
   	slm->p3 += v3; slm->p3 = slm->p3 % 10;
-  	super_sleep(90);
+  	super_sleep(80);
   }
   return NULL ;
 }
@@ -73,12 +74,12 @@ int main(int money) {
   	printf("%c\n",slot_machine.reel1[i]);
   }
   char command[128] = "help";
-  int bet;
+  int bet = 10;
 	while (strcmp(command, "exit") != 0){
 		system("clear");
 		if (strcmp(command, "play") == 0){
 			srand(time(0));
-			spin(&slot_machine);
+			spin(&slot_machine, bet);
 		}
 		else if (strcmp(command, "bet") == 0){
 			//play the slot machines
