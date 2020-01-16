@@ -17,8 +17,9 @@ $$$ | x10
 I was thinking we just show the animation of the slot machine in sdl after you type in your bet
 */
 
-char * spin(slot_machine * slots) {
-  return ':' ;
+char spin(slot_machine slots) {
+  int x = rand() % 10 ;
+  strcpy(REEL[x], slots.reel1) ;
 }
 
 int is_win(char * sym) {
@@ -32,5 +33,6 @@ int main() {
   printf("Have fun!\n") ;
 
   printf("\n\nEnter the amount you want to bet: ") ;
+  scanf() ;
   return 0 ;
 }
