@@ -22,7 +22,7 @@ int find_sum(card * hand) {
   }
   return sum ;
 }
-void transferCard(player * p, deck * d){
+void transferCard(player * p, deck * d) {
   p.hand[p.cardsInHand - 1] = d->cards[d->cardsInDeck - 1];
   d->cardsInDeck-- ;
   p->cardsInHand++ ;
@@ -32,7 +32,6 @@ void deal(player * p, deck * d) {
   transferCard(p,d) ;
   printf("Added cards to player's hand\n");
   p->sum = find_sum(p->hand) ;
-  d->sum = find_sum(d->hand) ;
 }
 // ~~~~~~~~~~~~~~~~ FUNCTIONS FOR SHUFFLING ~~~~~~~~~~~~~~~~
 
@@ -146,21 +145,16 @@ int main() {
 	d->cardsInDeck = 52 ;
   printf("Successfully added number of cards in deck\n");
 	// now onto the player
+  player * p ;
   deal(p, d) ;
 	player * dealer ; // now onto the dealer
-	dealer->hand[0] = d->cards[2] ;
-	dealer->hand[1] = d->cards[3] ;
-	(d->cards[2]).valid = 1 ;
-	(d->cards[3]).valid = 1 ;
-	d->cardsInDeck = 48 ;
-  dealer->sum = find_sum(dealer->hand) ;
+  deal(dealer, d) ;
   printCard(p->hand[0]) ;
   printCard(p->hand[1]) ;
   printf("The sum of the player's cards is: %d\n", p->sum) ;
   printCard(dealer->hand[0]) ;
   printCard(dealer->hand[1]) ;
   printf("The sum of the dealer's cards is: %d\n", dealer->sum) ;
-
 
   char response [100] ; // this will be used to hold the player's response to their options
   /*while (1) {
