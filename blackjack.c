@@ -6,6 +6,11 @@
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
 
+#define SPADE   "\xE2\x99\xA0"
+#define CLUB    "\xE2\x99\xA3"
+#define HEART   "\xE2\x99\xA5"
+#define DIAMOND "\xE2\x99\xA6"
+
 #define ACE 1
 #define JACK 10
 #define QUEEN 11
