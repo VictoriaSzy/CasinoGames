@@ -19,11 +19,15 @@
 
 #define REEL {'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'}
 typedef struct {
-  char reel1[10] ;
-  char reel2[10] ;
-  char reel3[10] ;
+  char reel1[11] ;
+  char reel2[11] ;
+  char reel3[11] ;
+  int p1; //where we are on the reel
+  int p2;
+  int p3;
 } SM ;
 
 char * spin(SM * slot_machine) ;
 int is_win(char * sym) ;
 int slots_game(int money);
+int super_sleep(int milliseconds);
