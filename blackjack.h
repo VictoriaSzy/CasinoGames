@@ -23,7 +23,7 @@ typedef struct {
 } player ;
 
 // Here are the functions:
-void printCard(card c) ;
+void printCard(card * c) ;
 void printDeck(deck * d) ;
 int find_sum(card * hand) ;
 void shuffle(deck * d) ;
