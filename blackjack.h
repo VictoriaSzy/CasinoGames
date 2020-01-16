@@ -17,12 +17,15 @@ typedef struct {
 
 // this is the struct for the player/dealer - we'll keep track of their hand like this
 typedef struct {
-  card hand [50] ; // we'll know the exact cards the player has
+  card hand [12] ; // we'll know the exact cards the player has
+  int cardsInHand;
   int sum ; // the sum of the player's cards
 } player ;
 
 // Here are the functions:
 void printCard(card c) ;
-void printDeck(deck d) ;
-int find_sum(card hand [50]) ;
-void shuffle(deck d) ;
+void printDeck(deck * d) ;
+int find_sum(card * hand) ;
+void shuffle(deck * d) ;
+void transferCard(player * p, deck * d) ;
+void deal(player * p, deck * d) ;
