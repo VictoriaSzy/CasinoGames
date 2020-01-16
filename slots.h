@@ -24,5 +24,5 @@ typedef struct {
   char reel3[10] ;
 } slot_machine ;
 
-char * spin(slot_machine * slots) ;
+char spin(slot_machine slots) ;
 int is_win(char * sym) ;
