@@ -35,20 +35,25 @@ char * spin(SM * slm) {
 	slm->p2 = rand() % 10; 
 	slm->p3 = rand() % 10; 
 
-	int spins = rand() % 10 + 10;
+	int spins = rand() % 10 + 12;
   for (int i = 0; i < spins; i++){
   	system("clear");
-  	printf(" SLOT MACHINE\n");
-  	printf("  ___________\n");
+  	printf(" SLOT MACHINE       \n");
+  	printf("  ___________       \n");
+  	printf(" |           |      \n");
   	printf(" |   _____   |      \n");
-  	printf(" |  |%c|%c|%c|  | \n", slm->reel1[(slm->p1+1)%10], slm->reel2[(slm->p2+1)%10], slm->reel3[(slm->p3+1)%10]);
-  	printf(" |->|%c|%c|%c|<-| \n", slm->reel1[slm->p1], slm->reel2[slm->p2], slm->reel3[slm->p3]);
-  	printf(" |  |%c|%c|%c|  | \n", slm->reel1[slm->p1 == 0 ? 9 : slm->p1-1], slm->reel2[slm->p2 == 0 ? 9 : slm->p2-1], slm->reel3[slm->p3 == 0 ? 9 : slm->p3-1]);
-  	printf(" |===========|      \n");
+
+  	printf(" |  |%c|%c|%c|  | O\n", slm->reel1[(slm->p1+2)%10], slm->reel2[(slm->p2+2)%10], slm->reel3[(slm->p3+2)%10]);
+  	printf(" |  |%c|%c|%c|  | |\n", slm->reel1[(slm->p1+1)%10], slm->reel2[(slm->p2+1)%10], slm->reel3[(slm->p3+1)%10]);
+  	printf(" |->|%c|%c|%c|<-| |\n", slm->reel1[slm->p1], slm->reel2[slm->p2], slm->reel3[slm->p3]);
+  	printf(" |  |%c|%c|%c|  | |\n", slm->reel1[slm->p1 == 0 ? 9 : slm->p1-1], slm->reel2[slm->p2 == 0 ? 9 : slm->p2-1], slm->reel3[slm->p3 == 0 ? 9 : slm->p3-1]);
+   	printf(" |  |%c|%c|%c|  | |\n", slm->reel1[slm->p1 == 1 ? 9 : slm->p1-2], slm->reel2[slm->p2 == 1 ? 9 : slm->p2-2], slm->reel3[slm->p3 == 1 ? 9 : slm->p3-2]);
+ 	
+  	printf(" |===========|=#      \n");
   	slm->p1 += v1; slm->p1 = slm->p1 % 10;
   	slm->p2 += v2; slm->p2 = slm->p2 % 10;
   	slm->p3 += v3; slm->p3 = slm->p3 % 10;
-  	super_sleep(120);
+  	super_sleep(90);
   }
   return NULL ;
 }
@@ -79,7 +84,8 @@ int main(int money) {
 			//play the slot machines
 		}
 		else if (strcmp(command, "help") == 0){
-			printf("\t-play\nType \"play\" to pull the lever on the slot machine\n\t-bet\nType \"bet\" to change your bet\n\t-help\n\t-exit\n");
+			printf("Type in commands to play. The Commands are: \n");
+			printf("\t-play\n\t  -Type \"play\" to insert your bet and pull the lever on the slot machine\n\t-bet\n\t  -Type \"bet\" use to change your bet\n\t-help\n\t-exit\n");
 		}
 		else {
 			printf("You entered: %s\n", command);
