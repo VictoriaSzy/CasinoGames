@@ -84,8 +84,9 @@ int slots_game(int money) {
 	while (strcmp(command, "exit") != 0){
 		system("clear");
 		printf("It's time to play with the Slot Machines!\n") ;
-  	printf("Match three numbers to win the amount you bet.\n") ;
-  	printf("Have fun!\n") ;
+  	
+		printf("\nYou currently have $%i dollars\n", money);
+
 		if (strcmp(command, "play") == 0){
 			srand(time(0));
 			spin(&slot_machine, bet);
@@ -99,16 +100,19 @@ int slots_game(int money) {
 			bet = atoi(newBid);
 		}
 		else if (strcmp(command, "help") == 0){
-			printf("Type in commands to play. The Commands are: \n");
+			printf("\nType in commands to play. The Commands are: \n");
 			printf("\t-play\n\t  -Type \"play\" to insert your bet and pull the lever on the slot machine\n\t-bet\n\t  -Type \"bet\" use to change your bet\n\t-help\n\t-exit\n");
 		}
+		//else if (strcmp(command, "") == 0){}
 		else {
-			printf("You entered: %s\n", command);
+			printf("You entered: \"%s\"\n", command);
 			printf("You did not enter a valid command. Possible commands are: \n\t-play\n\t-bet\n\t-help\n\t-exit\n");
 		}
-		printf("Enter your command: ");
+		printf("\nEnter your command: ");
 		fgets(command, 1024, stdin);
 		*strchr(command, '\n') = '\0';
 	}
+	printf("\nYou are leaving the slot machines\n");
+	super_sleep(800);
   return money ;
 }

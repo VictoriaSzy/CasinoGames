@@ -14,7 +14,7 @@ SDL_Texture * load_cards_texture(SDL_Renderer * renderer) {
 void home_message(){
 	system("clear");
 	printf("You've entered the casino floor!!\n");
-	printf("Possible commands are: \n\t-blackjack\n\t-slot\n\t-roulette\n\t-money\n\t-atm\n\t-help\n\t-exit\n");
+	printf("Possible commands are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 }
 
 int main(int argc, char const *argv[]) {
@@ -70,14 +70,16 @@ int main(int argc, char const *argv[]) {
 	while (strcmp(command, "exit") != 0){
 		system("clear");
 		printf("Welcome to the casino!!\n");
-		printf("Possible commands are: \n\t-blackjack\n\t-slot\n\t-roulette\n\t-money\n\t-atm\n\t-help\n\t-exit\n");
+		printf("Possible places to go to are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
+
+		printf("\nYou currently have $%i dollars\n", money);
 
 		//printf("%i\n", strcmp(command, "exit"));
 		//the game loop
 		if (strcmp(command, "blackjack") == 0){
 			//play blackjack
 		}
-		else if (strcmp(command, "slot") == 0){
+		else if (strcmp(command, "slots") == 0){
 			//play the slot machines
 			money = slots_game(money);
 			home_message();
@@ -85,24 +87,23 @@ int main(int argc, char const *argv[]) {
 		else if (strcmp(command, "roulette") == 0){
 			//play roulette
 		}
-		else if (strcmp(command, "money") == 0){
-			
-		}
-		else if (strcmp(command, "atm") == 0){
+		else if (strcmp(command, "count") == 0){
 			
 		}
 		else if (strcmp(command, "help") == 0){
+			system("clear");
 			printf("You've entered the casino!!\n");
-			printf("Possible commands are: \n\t-blackjack\n\t-slot\n\t-roulette\n\t-money\n\t-atm\n\t-help\n\t-exit\n");
+			printf("Possible commands are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 		}
 		else if (strcmp(command, "") == 0){}
 		else {
 			printf("You entered: \"%s\"\n", command);
-			printf("You did not enter a valid command. Possible commands are:  \n\t-blackjack\n\t-slot\n\t-roulette\n\t-money\n\t-atm\n\t-help\n\t-exit\n");
+			printf("You did not enter a valid command. Possible commands are:  \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 		}
-		printf("Enter your command: ");
+		printf("\nYou decide to do over to the: ");
 		fgets(command, 1024, stdin);
 		*strchr(command, '\n') = '\0';
 	}
+	printf("\nYou have left the casino.\n");
 	return 0;
 }
