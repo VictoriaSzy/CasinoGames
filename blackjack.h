@@ -7,7 +7,7 @@
 typedef struct {
   int suit ; // either a heart (0), club (1), diamond (2), or spade (3)
   int value ; // A will be worth either 1 or 11 and the face cards (J, Q, K) will be worth 10
-  //int valid ; // whether we can use it or not: 0 represents ok, 1 is no bueno
+  int valid ; // whether we can use it or not: 0 represents ok, 1 is no bueno
 } card ;
 
 typedef struct {
@@ -30,3 +30,4 @@ void shuffle(deck * d) ;
 void transferCard(player * p, deck * d) ;
 void deal(player * p, deck * d) ;
 deck makedeck() ;
+void fold(player * p, deck * d) ;
