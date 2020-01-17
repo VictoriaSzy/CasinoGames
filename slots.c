@@ -44,14 +44,14 @@ char * spin(SM * slm, int bet) {
   for (int i = 0; i < spins; i++){
   	system("clear");
   	printf(" \xE2\x99\xA0  SLOT MACHINE  \xE2\x99\xA0     \n");
-  	printf("    ___________       \n");
-  	printf("   | $ SLOTS $ |      \n");
-  	printf("   |   _____   |      \n");
+  	printf("    ___________             \n");
+  	printf("   | $ SLOTS $ |            \n");
+  	printf("   |   _____   |            \n");
 
   	//printf(" |  |%c|%c|%c|  | O\n", slm->reel1[(slm->p1+2)%10], slm->reel2[(slm->p2+2)%10], slm->reel3[(slm->p3+2)%10]);
-  	printf("   |  |%c|%c|%c|  | %c \n", slm->reel1[(slm->p1+1)%10], slm->reel2[(slm->p2+1)%10], slm->reel3[(slm->p3+1)%10], h1[i]);
-  	printf("   |->|%c|%c|%c|<-| %c \n", slm->reel1[slm->p1], slm->reel2[slm->p2], slm->reel3[slm->p3], h2[i]);
-  	printf("   |  |%c|%c|%c|  | %c \n", slm->reel1[slm->p1 == 0 ? 9 : slm->p1-1], slm->reel2[slm->p2 == 0 ? 9 : slm->p2-1], slm->reel3[slm->p3 == 0 ? 9 : slm->p3-1], h3[i]);
+  	printf("   |  |%c|%c|%c|  | %c   777 | x100  ### | x2 \n", slm->reel1[(slm->p1+1)%10], slm->reel2[(slm->p2+1)%10], slm->reel3[(slm->p3+1)%10], h1[i]);
+  	printf("   |->|%c|%c|%c|<-| %c   $$$ | x10   --- | x1 \n", slm->reel1[slm->p1], slm->reel2[slm->p2], slm->reel3[slm->p3], h2[i]);
+  	printf("   |  |%c|%c|%c|  | %c   @@@ | x3    ?17 | x-1\n", slm->reel1[slm->p1 == 0 ? 9 : slm->p1-1], slm->reel2[slm->p2 == 0 ? 9 : slm->p2-1], slm->reel3[slm->p3 == 0 ? 9 : slm->p3-1], h3[i]);
    	//printf(" |  |%c|%c|%c|  | |\n", slm->reel1[slm->p1 == 1 ? 9 : slm->p1-2], slm->reel2[slm->p2 == 1 ? 9 : slm->p2-2], slm->reel3[slm->p3 == 1 ? 9 : slm->p3-2]);
 
   	printf("   |===========|=#      \n");
@@ -99,11 +99,16 @@ int slots_game(int money) {
 		printf("\nYou currently have $%i dollars\n", money);
 
 		if (strcmp(command, "play") == 0){
-			srand(time(0));
-			spin(&slot_machine, bet);
-			money += is_win(&slot_machine) * bet;
+			if (money - bet >= 0){
+				srand(time(0));
+				spin(&slot_machine, bet);
+				money += is_win(&slot_machine) * bet;
 
-			printf("\nYou currently have $%i dollars\n", money);
+				printf("\nYou currently have $%i dollars\n", money);
+			} else {
+				printf("You do not have enough money\n");
+				printf("Visit the atm from the main casino floor to refill\n");
+			}
 		}
 		else if (strcmp(command, "bet") == 0){
 			printf("Your current bet is $%i\n", bet);
