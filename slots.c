@@ -31,31 +31,36 @@ char * spin(SM * slm, int bet) {
 	v2 = 1;//rand() % 4 + 1;
 	v3 = 1;//rand() % 4 + 1;
 
-	slm->p1 = rand() % 10; 
-	slm->p2 = rand() % 10; 
-	slm->p3 = rand() % 10; 
+	slm->p1 = rand() % 10;
+	slm->p2 = rand() % 10;
+	slm->p3 = rand() % 10;
 
-	int spins = rand() % 10 + 12;
+	//char * h1, h2, h3;
+	char * h1 = "O            OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO";
+	char * h2 = "|OO        OO|||||||||||||||||||||||||||||||";
+	char * h3 = "|||OOOOOOOO|||||||||||||||||||||||||||||||||";
+
+	int spins = rand() % 10 + 14;
   for (int i = 0; i < spins; i++){
   	system("clear");
-  	printf(" SLOT MACHINE       \n");
-  	printf("  ___________       \n");
-  	printf(" | $ SLOTS $ |      \n");
-  	printf(" |   _____   |      \n");
+  	printf(" \xE2\x99\xA0  SLOT MACHINE  \xE2\x99\xA0     \n");
+  	printf("    ___________       \n");
+  	printf("   | $ SLOTS $ |      \n");
+  	printf("   |   _____   |      \n");
 
   	//printf(" |  |%c|%c|%c|  | O\n", slm->reel1[(slm->p1+2)%10], slm->reel2[(slm->p2+2)%10], slm->reel3[(slm->p3+2)%10]);
-  	printf(" |  |%c|%c|%c|  | O\n", slm->reel1[(slm->p1+1)%10], slm->reel2[(slm->p2+1)%10], slm->reel3[(slm->p3+1)%10]);
-  	printf(" |->|%c|%c|%c|<-| |\n", slm->reel1[slm->p1], slm->reel2[slm->p2], slm->reel3[slm->p3]);
-  	printf(" |  |%c|%c|%c|  | |\n", slm->reel1[slm->p1 == 0 ? 9 : slm->p1-1], slm->reel2[slm->p2 == 0 ? 9 : slm->p2-1], slm->reel3[slm->p3 == 0 ? 9 : slm->p3-1]);
+  	printf("   |  |%c|%c|%c|  | %c \n", slm->reel1[(slm->p1+1)%10], slm->reel2[(slm->p2+1)%10], slm->reel3[(slm->p3+1)%10], h1[i]);
+  	printf("   |->|%c|%c|%c|<-| %c \n", slm->reel1[slm->p1], slm->reel2[slm->p2], slm->reel3[slm->p3], h2[i]);
+  	printf("   |  |%c|%c|%c|  | %c \n", slm->reel1[slm->p1 == 0 ? 9 : slm->p1-1], slm->reel2[slm->p2 == 0 ? 9 : slm->p2-1], slm->reel3[slm->p3 == 0 ? 9 : slm->p3-1], h3[i]);
    	//printf(" |  |%c|%c|%c|  | |\n", slm->reel1[slm->p1 == 1 ? 9 : slm->p1-2], slm->reel2[slm->p2 == 1 ? 9 : slm->p2-2], slm->reel3[slm->p3 == 1 ? 9 : slm->p3-2]);
- 	
-  	printf(" |===========|=#      \n");
-  	printf(" |Betting: $%i        \n", bet);
+
+  	printf("   |===========|=#      \n");
+  	printf("   [Betting: $%i]        \n", bet);
   	slm->p1 += v1; slm->p1 = slm->p1 % 10;
   	slm->p2 += v2; slm->p2 = slm->p2 % 10;
   	slm->p3 += v3; slm->p3 = slm->p3 % 10;
   	super_sleep(80);
-  }
+  } //make lever move down and up 10 moves
   return NULL ;
 }
 
@@ -68,7 +73,7 @@ int main(int money) {
   printf("Match three numbers to win the amount you bet.\n") ;
   printf("Match all three numbers to win 10 times the amount you bet!\n") ;
   printf("Have fun!\n") ;
-	
+
   SM slot_machine = {{'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'},{'&', '7', '#', '@', '%', '^', '!', '*', '?', '$'},{ '$', '#', '!', '%', '&', '@', '*', '7', '?', '^'}};
   for (int i = 0; i < 10; i++){
   	printf("%c\n",slot_machine.reel1[i]);
@@ -82,7 +87,11 @@ int main(int money) {
 			spin(&slot_machine, bet);
 		}
 		else if (strcmp(command, "bet") == 0){
-			//play the slot machines
+			printf("Your current bet is $%i\n", bet);
+			printf("Enter your bid amount: ");
+			char newBid[10000];
+			fgets(newBid, 10000, stdin);
+			*strchr(command, '\n') = '\0';
 		}
 		else if (strcmp(command, "help") == 0){
 			printf("Type in commands to play. The Commands are: \n");
