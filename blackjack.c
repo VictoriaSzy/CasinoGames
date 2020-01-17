@@ -50,18 +50,23 @@ deck makedeck() {
   int suit, x ;
   for (int suit = 0 ; suit < 4 ; suit++) {
     for (x = 0 ; x < 13 ; x++) {
-      (d.cards[x]).suit = suit ;
-      (d.cards[x]).value = x + 1 ;
-      //printf("Card value: %d, Card suit: %d\n", (d->cards[x]).value, (d->cards[x]).suit) ;
-      /*card * c = calloc(sizeof(card), 1) ;
+      card * c = calloc(sizeof(card), 1) ;
   		c->suit = suit ;
   		c->value = x + 1 ;
-      printCard(c) ;
-  		d.cards[x] = *c ;*/
+  		d.cards[x + 13 * suit] = *c ;
+      /*
+      d.cards[x].suit = suit ;
+      d.cards[x].value = x + 1 ;*/
+      printf("Card value: %d, Card suit: %d\n", d.cards[x].value, d.cards[x].suit) ;
+
   	}
   }
   d.cardsInDeck = 52 ;
   printf("Cards in deck: %d\n", d.cardsInDeck);
+  for (int i = 0; i < 52; i++){
+    printf("Card value: %d  Card suit: %d\n", d.cards[i].value, d.cards[i].suit);
+  }
+  printDeck(&d) ;
   return d ;
 }
 
@@ -85,36 +90,31 @@ void shuffle(deck * d) {
 
 // ~~~~~~~~~~~~~~~~ PRINTING FUNCTIONS ~~~~~~~~~~~~~~~~
 void printCard(card c) {
-  if (c.suit == NULL || c.value == NULL) {
-    printf("This is not a valid card! It has been nulled from a previous action!\n") ;
-  }
+  // We start with printing the value
+  printf("value from printcard: %d\n",c.value);
+  if (c.value > ACE && c.value < JACK) printf("%d", c.value) ;
+  else if (c.value == ACE) printf("A") ;
+  else if (c.value == JACK) printf("J") ;
+  else if (c.value == QUEEN) printf("Q") ;
+  else if (c.value == KING) printf("K") ;
   else {
-    // We start with printing the value
-    printf("value from printcard: %d\n",c.value);
-    if (c.value > ACE && c.value < JACK) printf("%d", c.value) ;
-    else if (c.value == ACE) printf("A") ;
-    else if (c.value == JACK) printf("J") ;
-    else if (c.value == QUEEN) printf("Q") ;
-    else if (c.value == KING) printf("K") ;
-    else {
-      // NOT GOOD!!
-      printf("ERROR WITH IDENTIFYING VALUE OF A CARD!!\n") ;
-    }
-    // And now we print out the suit
-    if (c.suit == 0) printf(" of HEARTS\n") ;
-    else if (c.suit == 2) printf(" of DIAMONDS\n") ;
-    else if (c.suit == 1) printf(" of CLUBS\n") ;
-    else if (c.suit == 3) printf(" of SPADES\n") ;
-    else {
-      // NOT GOOD!
-      printf("ERROR WITH IDENTIFYING SUIT OF A CARD!!\n") ;
-    }
+    // NOT GOOD!!
+    printf("ERROR WITH IDENTIFYING VALUE OF A CARD!!\n") ;
+  }
+  // And now we print out the suit
+  if (c.suit == 0) printf(" of HEARTS\n") ;
+  else if (c.suit == 2) printf(" of DIAMONDS\n") ;
+  else if (c.suit == 1) printf(" of CLUBS\n") ;
+  else if (c.suit == 3) printf(" of SPADES\n") ;
+  else {
+    // NOT GOOD!
+    printf("ERROR WITH IDENTIFYING SUIT OF A CARD!!\n") ;
   }
 }
 
 void printDeck(deck * d) {
   int i ;
-  for (i = 0 ; i < 52 && (d->cards[i]).suit < 4 ; i++) {
+  for (i = 0 ; i < 52 ; i++) {
     if ((d->cards[i]).suit == 0) {
       printf("%d of HEARTS\n", (d->cards[i]).value) ;
     }
@@ -137,8 +137,13 @@ int main() {
   deck d ; // we are creating the deck
   //printf("*****************************************\n\n\n");
   d = makedeck() ;
+  printf("***************************************************************************************************************************\n\n\n");
+  printf("***************************************************************************************************************************\n\n\n");
+  printf("***************************************************************************************************************************\n\n\n");
+  printf("***************************************************************************************************************************\n\n\n");
+
   printf("Deck has been made!\n");
-  printf("*****************************************\n\n\n");
+  printf("***************************************************************************************************************************\n\n\n");
   printDeck(&d) ;
   printf("*****************************************\n\n\n");
   shuffle(&d) ;
