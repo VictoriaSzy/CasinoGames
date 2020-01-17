@@ -20,5 +20,6 @@
 //#include "SDL.h"
 
 #include "blackjack.h"
+#include "slots.h"
 
 //#undef main
