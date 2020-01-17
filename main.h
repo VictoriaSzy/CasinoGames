@@ -15,8 +15,8 @@
 
 #include <signal.h>
 
-#define SDL_MAIN_HANDLED
-#include <SDL2/SDL.h>
+//#define SDL_MAIN_HANDLED
+//#include <SDL2/SDL.h>
 //#include "SDL.h"
 
 #include "blackjack.h"

@@ -64,9 +64,9 @@ int main(int argc, char const *argv[]) {
 		*/
     //wait(10);
 	////////// other things
-	
+
 	//printf("Welcome to the casino!!\n");
-	char command[128];
+	char command[128] = "";
 	int money = 500;
 	while (strcmp(command, "exit") != 0){
 		system("clear");
@@ -102,10 +102,11 @@ int main(int argc, char const *argv[]) {
 			*strchr(command, '\n') = '\0';
 			if (strcmp(command, "y") == 0 || strcmp(command, "yes") == 0){
 				money = 500;
+				printf("\nTranfering money...\n");
+				super_sleep(1500);
+			}else{
+				printf("You decided to save your money\n");
 			}
-			printf("\nTranfering money...\n");
-			super_sleep(1500);
-
 			home_message(money);
 		}
 		else if (strcmp(command, "help") == 0){
@@ -115,6 +116,7 @@ int main(int argc, char const *argv[]) {
 		}
 		else if (strcmp(command, "") == 0){}
 		else {
+			system("clear");
 			printf("You entered: \"%s\"\n", command);
 			printf("You did not enter a valid command. Possible commands are:  \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 		}
