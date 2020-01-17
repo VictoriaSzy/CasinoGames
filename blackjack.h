@@ -23,9 +23,10 @@ typedef struct {
 } player ;
 
 // Here are the functions:
-void printCard(card * c) ;
+void printCard(card c) ;
 void printDeck(deck * d) ;
 int find_sum(player * p) ;
 void shuffle(deck * d) ;
 void transferCard(player * p, deck * d) ;
 void deal(player * p, deck * d) ;
+deck makedeck() ;
