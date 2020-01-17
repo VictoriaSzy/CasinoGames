@@ -29,10 +29,14 @@ int find_sum(player * p) {
 }
 void transferCard(player * p, deck * d) {
   printf("transfer is called\n");
-  p->hand[p->cardsInHand + 1] = d->cards[d->cardsInDeck - 1];
+  p->hand[p->cardsInHand] = d->cards[d->cardsInDeck - 1];
+  d->cards[d->cardsInDeck - 1].valid = 1 ;
   printf("good with setting hand cards from deck\n");
   d->cardsInDeck-- ;
   p->cardsInHand++ ;
+}
+void fold(player * p, deck * d) {
+
 }
 void deal(player * p, deck * d) {
   printf("deal is called\n");
@@ -53,20 +57,19 @@ deck makedeck() {
       card * c = calloc(sizeof(card), 1) ;
   		c->suit = suit ;
   		c->value = x + 1 ;
+      c->valid = 0 ;
   		d.cards[x + 13 * suit] = *c ;
       /*
       d.cards[x].suit = suit ;
       d.cards[x].value = x + 1 ;*/
-      printf("Card value: %d, Card suit: %d\n", d.cards[x].value, d.cards[x].suit) ;
-
+      //printf("Card value: %d, Card suit: %d\n", d.cards[x].value, d.cards[x].suit) ;
   	}
   }
   d.cardsInDeck = 52 ;
-  printf("Cards in deck: %d\n", d.cardsInDeck);
+  /*printf("Cards in deck: %d\n", d.cardsInDeck);
   for (int i = 0; i < 52; i++){
     printf("Card value: %d  Card suit: %d\n", d.cards[i].value, d.cards[i].suit);
-  }
-  printDeck(&d) ;
+  }*/
   return d ;
 }
 
@@ -75,7 +78,6 @@ void shuffle(deck * d) {
 		int x, y ;
 		x = rand() % 52 ;
 		y = rand() % 52 ;
-
 		card tmp = d->cards[x] ;
 		d->cards[x] = d->cards[y] ;
 		d->cards[y] = tmp ;
@@ -114,8 +116,9 @@ void printCard(card c) {
 
 void printDeck(deck * d) {
   int i ;
-  for (i = 0 ; i < 52 ; i++) {
-    if ((d->cards[i]).suit == 0) {
+  for (i = 0 ; i < 52 && (d->cards[i]).valid != 0 ; i++) {
+    printCard(d->cards[i]) ;
+    /*if ((d->cards[i]).suit == 0) {
       printf("%d of HEARTS\n", (d->cards[i]).value) ;
     }
     else if ((d->cards[i]).suit == 1) {
@@ -129,7 +132,7 @@ void printDeck(deck * d) {
     }
     else {
       printf("The suit of the card has an issue!!\n") ;
-    }
+    }*/
   }
 }
 
@@ -137,22 +140,19 @@ int main() {
   deck d ; // we are creating the deck
   //printf("*****************************************\n\n\n");
   d = makedeck() ;
-  printf("***************************************************************************************************************************\n\n\n");
-  printf("***************************************************************************************************************************\n\n\n");
-  printf("***************************************************************************************************************************\n\n\n");
-  printf("***************************************************************************************************************************\n\n\n");
-
   printf("Deck has been made!\n");
-  printf("***************************************************************************************************************************\n\n\n");
   printDeck(&d) ;
   printf("*****************************************\n\n\n");
   shuffle(&d) ;
   printf("Deck has been shuffled\n");
   printDeck(&d) ;
+  printf("*****************************************\n\n\n");
 	// now onto the player
   player p ;
   p.cardsInHand = 0 ;
   deal(&p, &d) ;
+  player dealer ;
+  deal(&dealer, &d) ;
 	/*player dealer ; // now onto the dealer
   dealer.cardsInHand = 0 ;
   deal(&dealer, &d) ;
