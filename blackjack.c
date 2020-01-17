@@ -18,11 +18,11 @@ const int SCREEN_HEIGHT = 480;
 
 // ~~~~~~~~~~~~~~~~ SUM & ACTION FUNCTIONS ~~~~~~~~~~~~~~~~
 
-int find_sum(card * hand) {
+int find_sum(player * p) {
   int x ;
   int sum = 0 ;
-  for (x = 0 ; (hand[x]).valid == 0 ; x++) {
-    card c = hand[x] ;
+  for (x = 0 ; x < (p->cardsInHand) ; x++) {
+    card c = p->hand[x] ;
     sum += c.value ;
   }
   return sum ;
@@ -41,7 +41,7 @@ void deal(player * p, deck * d) {
   transferCard(p,d) ;
   printf("second transfer is good\n");
   printf("Added cards to player's hand\n");
-  p->sum = find_sum(p->hand) ;
+  p->sum = find_sum(p) ;
 }
 // ~~~~~~~~~~~~~~~~ FUNCTIONS FOR SHUFFLING ~~~~~~~~~~~~~~~~
 
@@ -65,17 +65,17 @@ void shuffle(deck * d) {
 
 // ~~~~~~~~~~~~~~~~ PRINTING FUNCTIONS ~~~~~~~~~~~~~~~~
 void printCard(card * c) {
-  if (c->valid != 0) {
+  if (c == NULL) {
     printf("This is not a valid card! It has been nulled from a previous action!\n") ;
   }
   else {
     // We start with printing the value
+    printf("value from printcard: %d\n",c->value);
     if (c->value > ACE && c->value < JACK) printf("%d", c->value) ;
-    else if (c->value == 1) printf("A") ;
-    else if (c->value == 11) printf("J") ;
-    else if (c->value == 12) printf("Q") ;
-    else if (c->value == 13) printf("K") ;
-    else if (c->value > ACE && c->value < JACK) printf("%d", c->value) ;
+    else if (c->value == ACE) printf("A") ;
+    else if (c->value == JACK) printf("J") ;
+    else if (c->value == QUEEN) printf("Q") ;
+    else if (c->value == KING) printf("K") ;
     else {
       // NOT GOOD!!
       printf("ERROR WITH IDENTIFYING VALUE OF A CARD!!\n") ;
@@ -104,21 +104,25 @@ void printDeck(deck * d) {
 int main() {
   printf("*****************************************\n");
   deck d ; // we are creating the deck
+  card d [52] ;
+  makedeck(* d) ;
 	int suit, x ;
 	// this first for loop adds the heart cards
   for (int suit = 0 ; suit < 4 ; suit++) {
     for (x = 0 ; x < 13 ; x++) {
-      card * c = calloc(sizeof(card), 1) ;
+      (d.cards[x]).suit = suit ;
+      (d.cards[x]).value = x + 1 ;
+      printf("Card value: %d\n", (d.cards[x]).value) ;
+      /*card * c = calloc(sizeof(card), 1) ;
   		c->suit = suit ;
   		c->value = x + 1 ;
-      c->valid = 0 ;
-      printf("Card value: %d\n", c->value) ;
       printCard(c) ;
-  		d.cards[x] = *c ;
+  		d.cards[x] = *c ;*/
   	}
   }
   printf("*****************************************\n\n\n");
 	d.cardsInDeck = 52 ;
+  shuffle(&d) ;
 	// now onto the player
   player p ;
   p.cardsInHand = 0 ;
@@ -127,8 +131,9 @@ int main() {
   dealer.cardsInHand = 0 ;
   deal(&dealer, &d) ;
   printf("able to deal\n");
-
+  printf("value: %d\n", (p.hand[0]).value);
   printCard(&p.hand[0]) ;
+  printf("printed first card!!\n\n");
   printCard(&p.hand[1]) ;
   printf("The sum of the player's cards is: %d\n", p.sum) ;
   printCard(&(dealer.hand[0])) ;
