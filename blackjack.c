@@ -12,9 +12,9 @@ const int SCREEN_HEIGHT = 480;
 #define DIAMOND "\xE2\x99\xA6"
 
 #define ACE 1
-#define JACK 10
-#define QUEEN 11
-#define KING 12
+#define JACK 11
+#define QUEEN 12
+#define KING 13
 
 // ~~~~~~~~~~~~~~~~ SUM & ACTION FUNCTIONS ~~~~~~~~~~~~~~~~
 
@@ -30,7 +30,7 @@ int find_sum(card * hand) {
 void transferCard(player * p, deck * d) {
   printf("transfer is called\n");
   p->hand[p->cardsInHand + 1] = d->cards[d->cardsInDeck - 1];
-  printf("error with setting hand cards from deck\n");
+  printf("good with setting hand cards from deck\n");
   d->cardsInDeck-- ;
   p->cardsInHand++ ;
 }
@@ -71,10 +71,10 @@ void printCard(card * c) {
   else {
     // We start with printing the value
     if (c->value > ACE && c->value < JACK) printf("%d", c->value) ;
-    else if (c->value == ACE) printf("A") ;
-    else if (c->value == JACK) printf("J") ;
-    else if (c->value == QUEEN) printf("Q") ;
-    else if (c->value == KING) printf("K") ;
+    else if (c->value == 1) printf("A") ;
+    else if (c->value == 11) printf("J") ;
+    else if (c->value == 12) printf("Q") ;
+    else if (c->value == 13) printf("K") ;
     else if (c->value > ACE && c->value < JACK) printf("%d", c->value) ;
     else {
       // NOT GOOD!!
@@ -96,23 +96,28 @@ void printCard(card * c) {
 void printDeck(deck * d) {
   int i ;
   for (i = 0 ; i < (d->cardsInDeck) ; i++) {
-    printCard(d->cards[i]) ;
+    printCard(&(d->cards[i])) ;
     printf(" ") ;
   }
 }
 
 int main() {
+  printf("*****************************************\n");
   deck d ; // we are creating the deck
-	int suit x ;
+	int suit, x ;
 	// this first for loop adds the heart cards
   for (int suit = 0 ; suit < 4 ; suit++) {
     for (x = 0 ; x < 13 ; x++) {
-      card c = malloc(sizeof(card)) ;
-  		c.suit = suit ;
-  		c.value = x + 1 ;
-  		d.cards[x] = c ;
+      card * c = calloc(sizeof(card), 1) ;
+  		c->suit = suit ;
+  		c->value = x + 1 ;
+      c->valid = 0 ;
+      printf("Card value: %d\n", c->value) ;
+      printCard(c) ;
+  		d.cards[x] = *c ;
   	}
   }
+  printf("*****************************************\n\n\n");
 	d.cardsInDeck = 52 ;
 	// now onto the player
   player p ;
@@ -126,8 +131,8 @@ int main() {
   printCard(&p.hand[0]) ;
   printCard(&p.hand[1]) ;
   printf("The sum of the player's cards is: %d\n", p.sum) ;
-  printCard(dealer.hand[0]) ;
-  printCard(dealer.hand[1]) ;
+  printCard(&(dealer.hand[0])) ;
+  printCard(&(dealer.hand[1])) ;
   printf("The sum of the dealer's cards is: %d\n", dealer.sum) ;
 
   char response [100] ; // this will be used to hold the player's response to their options
