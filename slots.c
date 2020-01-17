@@ -55,6 +55,7 @@ char * spin(SM * slm, int bet) {
    	//printf(" |  |%c|%c|%c|  | |\n", slm->reel1[slm->p1 == 1 ? 9 : slm->p1-2], slm->reel2[slm->p2 == 1 ? 9 : slm->p2-2], slm->reel3[slm->p3 == 1 ? 9 : slm->p3-2]);
 
   	printf("   |===========|=#      \n");
+  	//printf("   |  [%c|%c|%c]  |  \n");
   	printf("   [Betting: $%i]        \n", bet);
   	slm->p1 += v1; slm->p1 = slm->p1 % 10;
   	slm->p2 += v2; slm->p2 = slm->p2 % 10;
@@ -67,11 +68,10 @@ char * spin(SM * slm, int bet) {
 int is_win(char * sym) {
   return 0 ;
 }
-int slots_game(int money) {}
-int main(int money) {
+int slots_game(int money) {
   printf("It's time to play with the Slot Machines!\n") ;
   printf("Match three numbers to win the amount you bet.\n") ;
-  printf("Match all three numbers to win 10 times the amount you bet!\n") ;
+  //printf("Match all three numbers to win 10 times the amount you bet!\n") ;
   printf("Have fun!\n") ;
 
   SM slot_machine = {{'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'},{'&', '7', '#', '@', '%', '^', '!', '*', '?', '$'},{ '$', '#', '!', '%', '&', '@', '*', '7', '?', '^'}};
@@ -80,8 +80,12 @@ int main(int money) {
   }
   char command[128] = "help";
   int bet = 10;
+
 	while (strcmp(command, "exit") != 0){
 		system("clear");
+		printf("It's time to play with the Slot Machines!\n") ;
+  	printf("Match three numbers to win the amount you bet.\n") ;
+  	printf("Have fun!\n") ;
 		if (strcmp(command, "play") == 0){
 			srand(time(0));
 			spin(&slot_machine, bet);
@@ -89,9 +93,10 @@ int main(int money) {
 		else if (strcmp(command, "bet") == 0){
 			printf("Your current bet is $%i\n", bet);
 			printf("Enter your bid amount: ");
-			char newBid[10000];
-			fgets(newBid, 10000, stdin);
-			*strchr(command, '\n') = '\0';
+			char newBid[1000];
+			fgets(newBid, 1000, stdin);
+			*strchr(newBid, '\n') = '\0';
+			bet = atoi(newBid);
 		}
 		else if (strcmp(command, "help") == 0){
 			printf("Type in commands to play. The Commands are: \n");
