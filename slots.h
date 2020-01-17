@@ -28,6 +28,6 @@ typedef struct {
 } SM ;
 
 char * spin(SM * slot_machine, int bet) ;
-int is_win(char * sym) ;
+int is_win(SM * slm) ;
 int slots_game(int money);
 int super_sleep(int milliseconds);
