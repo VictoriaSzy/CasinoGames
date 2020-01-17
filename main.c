@@ -11,9 +11,10 @@ SDL_Texture * load_cards_texture(SDL_Renderer * renderer) {
   SDL_FreeSurface(cards_surface) ;
   return cards_texture ;
 } */
-void home_message(){
+void home_message(int money){
 	system("clear");
 	printf("You've entered the casino floor!!\n");
+	printf("You currently have $%i dollars\n", money);
 	printf("Possible commands are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 }
 
@@ -82,7 +83,7 @@ int main(int argc, char const *argv[]) {
 		else if (strcmp(command, "slots") == 0){
 			//play the slot machines
 			money = slots_game(money);
-			home_message();
+			home_message(money);
 		}
 		else if (strcmp(command, "roulette") == 0){
 			//play roulette
@@ -92,7 +93,7 @@ int main(int argc, char const *argv[]) {
 		}
 		else if (strcmp(command, "help") == 0){
 			system("clear");
-			printf("You've entered the casino!!\n");
+			printf("You're in a casino\n");
 			printf("Possible commands are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 		}
 		else if (strcmp(command, "") == 0){}
