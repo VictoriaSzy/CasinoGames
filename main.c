@@ -67,7 +67,7 @@ int main(int argc, char const *argv[]) {
 	
 	//printf("Welcome to the casino!!\n");
 	char command[128];
-	int money = 100;
+	int money = 500;
 	while (strcmp(command, "exit") != 0){
 		system("clear");
 		printf("Welcome to the casino!!\n");
@@ -88,8 +88,25 @@ int main(int argc, char const *argv[]) {
 		else if (strcmp(command, "roulette") == 0){
 			//play roulette
 		}
-		else if (strcmp(command, "count") == 0){
-			
+		else if (strcmp(command, "atm") == 0){
+			system("clear");
+			printf("You contemplate your existence as you walk toward the atm\n");
+			printf("Did you really come here to give money to rich coporations?\n\n");
+			super_sleep(1000);
+			printf("The ATM cannot be used to get unlimited money.\n");
+			printf("If you use the ATM you will either deposit money until you have $500 left or \n");
+			printf("you will withdraw from your (unlimited) bank account until you have $500\n");
+			printf("\nYou currently have $%i dollars\n", money);
+			printf("\nDo you wish to continue? (y/n): ");
+			fgets(command, 1024, stdin);
+			*strchr(command, '\n') = '\0';
+			if (strcmp(command, "y") == 0 || strcmp(command, "yes") == 0){
+				money = 500;
+			}
+			printf("\nTranfering money...\n");
+			super_sleep(1500);
+
+			home_message(money);
 		}
 		else if (strcmp(command, "help") == 0){
 			system("clear");
