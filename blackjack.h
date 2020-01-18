@@ -33,3 +33,5 @@ void transferCard(player * p, deck * d) ;
 void deal(player * p, deck * d) ;
 deck makedeck() ;
 void fold(player * p, deck * d) ;
+void hit(player *p, deck * d) ;
+int blackjack(int money) ;
