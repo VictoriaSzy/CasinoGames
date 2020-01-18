@@ -22,32 +22,34 @@
        18171615
 */
 /*
-       NNNNNNNN
-    NNNN      NNNN    
-  NNN            NNN
- NN                NN
-NN                  NN
-N                    N
-N                    N
-NN                  NN 
- NN                NN
-  NNN            NNN 
-    NNNN      NNNN
+       NN|NN|NN
+    NNNN112233NNNN    
+  NNN566      445NNN
+ NN45            56NN
+NN3                7NN
+N2                  8N
+N2                  8N
+NN1                9NN 
+ NN98            21NN
+  NNN877      332NNN 
+    NNNN665544NNNN
        NNNNNNNN
   */
 /*
        01N02N03
-    NN00      04NN    
+    NN24      04NN    
   N23            05N
  22                06
 21                  07
-0                    0
-2                    8
+0         /\         0
+2         \/         8
 19                  09 
  18                10
   N17            11N 
     NN16      12NN
        15N14N13
+
+
   */
 /*
         NNNNNNNN
