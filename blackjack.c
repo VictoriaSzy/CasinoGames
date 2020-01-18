@@ -44,7 +44,7 @@ int find_max_sum(player * p) {
   return sum ;
 }
 void transferCard(player * p, deck * d) {
-  printf("transfer is called\n");
+  printf("You are receiving a card!\n");
   p->hand[p->cardsInHand] = d->cards[d->cardsInDeck - 1];
   d->cards[d->cardsInDeck - 1].valid = 1 ;
   printf("good with setting hand cards from deck\n");
@@ -66,6 +66,11 @@ void deal(player * p, deck * d) {
   p->max_sum = find_max_sum(p) ;
   printf("The max sum: %d\n", p->max_sum);
 }
+
+void hit(player * p, deck * d) {
+  transferCard(p,d) ;
+}
+
 // ~~~~~~~~~~~~~~~~ FUNCTIONS FOR SHUFFLING ~~~~~~~~~~~~~~~~
 
 deck makedeck() {
@@ -100,12 +105,6 @@ void shuffle(deck * d) {
 	}
 }
 
-/*void hit(player * p) {
-  if (player->sum > 21) {
-    printf("You cannot hit because you are over 21! You have busted!\n") ;
-  }
-}*/
-
 // ~~~~~~~~~~~~~~~~ PRINTING FUNCTIONS ~~~~~~~~~~~~~~~~
 void printCard(card c) {
   // We start with printing the value
@@ -137,6 +136,67 @@ void printDeck(deck * d) {
   }
 }
 
+// ~~~~~~~~~~~~~~~~ GAME FUNCTION ~~~~~~~~~~~~~~~~
+
+int super_sleep(int milliseconds) {
+	struct timespec ts ;
+  ts.tv_sec = milliseconds / 1000 ;
+  ts.tv_nsec = (milliseconds % 1000) * 1000000 ;
+  return nanosleep(&ts, NULL) ;
+}
+
+int blackjack(int money) {
+  printf("Woohoo! Let's play Blackjack!!\n") ;
+  printf("You are given 2 cards. Try to get the highest sum without going over 21 (or \"busting\").\n") ;
+  printf("Note: You currently have $%i\n", money) ;
+
+  char command[128] = "help" ;
+  int bet = 10 ; // let's start with a simple bet of $10
+
+	while (strcmp(command, "exit") != 0) {
+		system("clear") ;
+      printf("Let's begin! It's you and the dealer!\n\n") ;
+
+		printf("\nYou currently have $%i\n", money) ;
+
+		if (strcmp(command, "play") == 0) {
+			if (money - bet >= 0) {
+				srand(time(0)) ;
+				spin(&slot_machine, bet) ;
+				money += is_win(&slot_machine) * bet ;
+
+				printf("\nYou currently have $%i dollars\n", money) ;
+			}
+      else {
+				printf("You do not have enough money to make this bet!\n") ;
+				printf("Visit the atm from the main casino floor to refill.\n") ;
+			}
+		}
+		else if (strcmp(command, "bet") == 0) {
+			printf("Your current bet is $%i\n", bet) ;
+			printf("Enter the amount you want to bid: ") ;
+			char newBid[1000] ;
+			fgets(newBid, 1000, stdin) ;
+			* strchr(newBid, '\n') = '\0' ;
+			bet = atoi(newBid) ;
+		}
+		else if (strcmp(command, "help") == 0) {
+			printf("\nType commands to play. The commands are: \n") ;
+			printf("\t-play\n\t  -Type \"play\" to insert your bet and get the first 2 cards that you are dealt\n\t-bet\n\t  -Type \"bet\" to change the amount of your bet\n\t-help\n\t-exit\n") ;
+		}
+		else {
+			printf("You entered: \"%s\"\n", command) ;
+			printf("This isn't a valid command. Possible commands include: \n\t-play\n\t-bet\n\t-help\n\t-exit\n") ;
+		}
+		printf("\nType in what you want to do: ") ;
+		fgets(command, 1024, stdin) ;
+		*strchr(command, '\n') = '\0' ;
+	}
+	printf("\nYou are leaving Blackjack!\n") ;
+	super_sleep(800) ;
+  return money ;
+}
+
 int main() {
   deck d ; // we are creating the deck
   //printf("*****************************************\n\n\n");
@@ -166,6 +226,12 @@ int main() {
   printCard(dealer.hand[1]) ;
   printf("The smallest sum of the dealer's cards is: %d\n", find_min_sum(&dealer));
   printf("The largest sum of the dealer's cards is: %d\n", find_max_sum(&dealer));
+  printf("*****************************************\n\n\n");
+  printf("Let's give the player another card!\n");
+  hit(&p, &d) ;
+  printCard(p.hand[0]) ;
+  printCard(p.hand[1]) ;
+  printCard(p.hand[2]) ;
 	/*player dealer ; // now onto the dealer
   dealer.cardsInHand = 0 ;
   deal(&dealer, &d) ;
