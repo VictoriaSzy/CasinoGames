@@ -13,11 +13,6 @@ other three of a kinds get | x1
 ?17 | x0
 */
 
-/*
-
-I was thinking we just show the animation of the slot machine in sdl after you type in your bet
-*/
-
 int super_sleep(int milliseconds){
 	struct timespec ts;
   ts.tv_sec = milliseconds / 1000;
@@ -95,7 +90,7 @@ int slots_game(int money) {
 	while (strcmp(command, "exit") != 0){
 		system("clear");
 		printf("It's time to play with the Slot Machines!\n") ;
-  	
+
 		printf("\nYou currently have $%i dollars\n", money);
 
 		if (strcmp(command, "play") == 0){
