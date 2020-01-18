@@ -19,13 +19,15 @@ typedef struct {
 typedef struct {
   card hand [12] ; // we'll know the exact cards the player has
   int cardsInHand;
-  int sum ; // the sum of the player's cards
+  int min_sum ; // the smallest sum of the player's cards
+  int max_sum ; // the largest sum of the player's cards
 } player ;
 
 // Here are the functions:
 void printCard(card c) ;
 void printDeck(deck * d) ;
-int find_sum(player * p) ;
+int find_min_sum(player * p) ;
+int find_max_sum(player * p) ;
 void shuffle(deck * d) ;
 void transferCard(player * p, deck * d) ;
 void deal(player * p, deck * d) ;
