@@ -18,12 +18,28 @@ const int SCREEN_HEIGHT = 480;
 
 // ~~~~~~~~~~~~~~~~ SUM & ACTION FUNCTIONS ~~~~~~~~~~~~~~~~
 
-int find_sum(player * p) {
+int find_min_sum(player * p) {
   int x ;
   int sum = 0 ;
   for (x = 0 ; x < (p->cardsInHand) ; x++) {
-    card c = p->hand[x] ;
-    sum += c.value ;
+    if ((p->hand[x]).value > 10) sum += 10 ;
+    else {
+      sum += (p->hand[x]).value ;
+    }
+    printf("Value being added: %d\n", (p->hand[x]).value) ;
+  }
+  return sum ;
+}
+int find_max_sum(player * p) {
+  int x ;
+  int sum = 0 ;
+  for (x = 0 ; x < (p->cardsInHand) ; x++) {
+    if ((p->hand[x]).value > 10) sum += 10 ;
+    else if ((p->hand[x]).value == 1) sum += 11 ;
+    else {
+      sum += (p->hand[x]).value ;
+    }
+    printf("Value being added: %d\n", (p->hand[x]).value) ;
   }
   return sum ;
 }
@@ -39,13 +55,16 @@ void fold(player * p, deck * d) {
 
 }
 void deal(player * p, deck * d) {
-  printf("deal is called\n");
+  //printf("deal is called\n");
   transferCard(p,d) ;
   printf("first transfer is good\n");
   transferCard(p,d) ;
   printf("second transfer is good\n");
   printf("Added cards to player's hand\n");
-  p->sum = find_sum(p) ;
+  p->min_sum = find_min_sum(p) ;
+  printf("The min sum: %d\n", p->min_sum);
+  p->max_sum = find_max_sum(p) ;
+  printf("The max sum: %d\n", p->max_sum);
 }
 // ~~~~~~~~~~~~~~~~ FUNCTIONS FOR SHUFFLING ~~~~~~~~~~~~~~~~
 
@@ -59,9 +78,6 @@ deck makedeck() {
   		c->value = x + 1 ;
       c->valid = 0 ;
   		d.cards[x + 13 * suit] = *c ;
-      /*
-      d.cards[x].suit = suit ;
-      d.cards[x].value = x + 1 ;*/
       //printf("Card value: %d, Card suit: %d\n", d.cards[x].value, d.cards[x].suit) ;
   	}
   }
@@ -118,21 +134,6 @@ void printDeck(deck * d) {
   int i ;
   for (i = 0 ; i < 52 && (d->cards[i]).valid != 0 ; i++) {
     printCard(d->cards[i]) ;
-    /*if ((d->cards[i]).suit == 0) {
-      printf("%d of HEARTS\n", (d->cards[i]).value) ;
-    }
-    else if ((d->cards[i]).suit == 1) {
-      printf("%d of CLUBS\n", (d->cards[i]).value) ;
-    }
-    else if ((d->cards[i]).suit == 2) {
-      printf("%d of DIAMONDS\n", (d->cards[i]).value) ;
-    }
-    else if ((d->cards[i]).suit == 3) {
-      printf("%d of SPADES\n", (d->cards[i]).value) ;
-    }
-    else {
-      printf("The suit of the card has an issue!!\n") ;
-    }*/
   }
 }
 
@@ -140,19 +141,31 @@ int main() {
   deck d ; // we are creating the deck
   //printf("*****************************************\n\n\n");
   d = makedeck() ;
-  printf("Deck has been made!\n");
+  printf("Deck has been made! Here it is:\n");
   printDeck(&d) ;
   printf("*****************************************\n\n\n");
   shuffle(&d) ;
-  printf("Deck has been shuffled\n");
+  printf("Deck has been shuffled! Here it is:\n");
   printDeck(&d) ;
   printf("*****************************************\n\n\n");
 	// now onto the player
   player p ;
   p.cardsInHand = 0 ;
+  printf("deal is called\n");
   deal(&p, &d) ;
+  printf("Here are the player's cards:\n");
+  printCard(p.hand[0]) ;
+  printCard(p.hand[1]) ;
+  printf("The smallest sum of the player's cards is: %d\n", find_min_sum(&p));
+  printf("The largest sum of the player's cards is: %d\n", find_max_sum(&p));
+  printf("Moving onto the dealer\n");
   player dealer ;
   deal(&dealer, &d) ;
+  printf("Here are the dealer's cards:\n");
+  printCard(dealer.hand[0]) ;
+  printCard(dealer.hand[1]) ;
+  printf("The smallest sum of the dealer's cards is: %d\n", find_min_sum(&dealer));
+  printf("The largest sum of the dealer's cards is: %d\n", find_max_sum(&dealer));
 	/*player dealer ; // now onto the dealer
   dealer.cardsInHand = 0 ;
   deal(&dealer, &d) ;
