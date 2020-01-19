@@ -19,52 +19,6 @@ void home_message(int money){
 }
 
 int main(int argc, char const *argv[]) {
-	/*
-	SDL_Init(SDL_INIT_VIDEO);
-
-	SDL_WM_SetCaption("SDL Test", "SDL Test");
-
-	SDL_Surface* screen = SDL_SetVideoMode(640, 480, 0, 0);
-
-	SDL_Surface* temp = SDL_LoadBMP("sdl_logo.bmp");
-
-	SDL_Surface* bg = SDL_DisplayFormat(temp);
-
-	SDL_FreeSurface(temp);
-
-	SDL_Event event;
-	int gameover = 0;
-
-	while (!gameover)
-	{
-	if (SDL_PollEvent(&event)) {
-	  switch (event.type) {
-	    case SDL_QUIT:
-	      gameover = 1;
-	      break;
-	    case SDL_KEYDOWN:
-	      switch (event.key.keysym.sym) {
-	        case SDLK_ESCAPE:
-	        case SDLK_q:
-	          gameover = 1;
-	          break;
-	      }
-	      break;
-	  }
-	}
-
-	SDL_BlitSurface(bg, NULL, screen, NULL);
-
-	SDL_UpdateRect(screen, 0, 0, 0, 0);
-	}
-
-	SDL_FreeSurface(bg);
-
-	SDL_Quit();
-		*/
-    //wait(10);
-	////////// other things
-
 	//printf("Welcome to the casino!!\n");
 	char command[128] = "";
 	int money = 500;
@@ -79,6 +33,8 @@ int main(int argc, char const *argv[]) {
 		//the game loop
 		if (strcmp(command, "blackjack") == 0){
 			//play blackjack
+			money = blackjack(money) ;
+			home_message(money) ;
 		}
 		else if (strcmp(command, "slots") == 0){
 			//play the slot machines
@@ -90,28 +46,30 @@ int main(int argc, char const *argv[]) {
 		}
 		else if (strcmp(command, "atm") == 0){
 			system("clear");
-			printf("You contemplate your existence as you walk toward the atm\n");
-			printf("Did you really come here to give money to rich coporations?\n\n");
+			printf("You contemplate your existence as you walk toward the atm.\n") ;
+			printf("You need more money. Or maybe you want more money. You know where this money will go.\n") ;
+			printf("Did you really come here to give money to rich coporations?\n\n") ;
 			super_sleep(1000);
 			printf("The ATM cannot be used to get unlimited money.\n");
-			printf("If you use the ATM you will either deposit money until you have $500 left or \n");
-			printf("you will withdraw from your (unlimited) bank account until you have $500\n");
-			printf("\nYou currently have $%i dollars\n", money);
-			printf("\nDo you wish to continue? (y/n): ");
+			printf("If you use the ATM you will either deposit money until you have $500 left or \n") ;
+			printf("you will withdraw from your (unlimited) bank account until you have $500\n") ;
+			printf("\nYou currently have $%i dollars\n", money) ;
+			printf("\nDo you wish to continue? (y/n): ") ;
 			fgets(command, 1024, stdin);
 			*strchr(command, '\n') = '\0';
-			if (strcmp(command, "y") == 0 || strcmp(command, "yes") == 0){
-				money = 500;
-				printf("\nTranfering money...\n");
-				super_sleep(1500);
-			}else{
-				printf("You decided to save your money\n");
+			if (strcmp(command, "y") == 0 || strcmp(command, "yes") == 0) {
+				money = 500 ;
+				printf("\nTranfering money...\n") ;
+				super_sleep(1500) ;
 			}
-			home_message(money);
+			else {
+				printf("You decided to save your money\n") ;
+			}
+			home_message(money) ;
 		}
-		else if (strcmp(command, "help") == 0){
-			system("clear");
-			printf("You're in a casino\n");
+		else if (strcmp(command, "help") == 0) {
+			system("clear") ;
+			printf("You're in a casino!\n") ;
 			printf("Possible commands are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 		}
 		else if (strcmp(command, "") == 0){}
