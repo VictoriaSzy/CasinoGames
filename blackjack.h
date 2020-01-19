@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 // typedef structs mean that we won't have to type struct countless times in the return types of the functions
 
