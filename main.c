@@ -85,14 +85,15 @@ int main(int argc, char const *argv[]) {
 		*strchr(command, '\n') = '\0' ;
 	}
 	printf("\nYou have left the casino. Thank you for your time.\n") ;
-	/*printf(" __      __\n") ;
-	printf(" _\    /_ ") ;
- \ _\  /_ /
-  \ _\/_ /_ _
-  |_____/_/ /|
-  (  (_)__)J-)
-  (  /`.,   /
-   \/  ;   /
-    | === |dwb\n", );*/
+  /*printf("__      __\n") ;
+	printf(" _\    /_ \n") ;
+  printf("\ _\  /_ /\n") ;
+  printf("\ _\/_ /_ _\n") ;
+  printf("|_____/_/ /|\n") ;
+  printf("(  (_)__)J-)\n") ;
+  printf("(  /`.,   /") ;
+  printf(" \/  ;   /") ;
+    | === |dwb\n", );
+		*/
 	return 0 ;
 }
