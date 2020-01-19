@@ -138,9 +138,9 @@ void displayJack(int suit) {
   if (suit == 1) printf("| \xE2\x99\xA3 {)|\n") ; // CLUBS
   if (suit == 2) printf("| \xE2\x99\xA6 {)|\n") ; // DIAMONDS
   if (suit == 3) printf("| \xE2\x99\xA0 {)|\n") ; // SPADES
-  printf("|   % |\n") ;
-  printf("|   % |\n") ;
-  printf("|__%%[|\n") ;
+  printf("|   %% |\n") ;
+  printf("|   %% |\n") ;
+  printf("|__%%%%[|\n") ;
 }
 void displayQueen(int suit) {
   printf(" _____ \n") ;
@@ -149,9 +149,9 @@ void displayQueen(int suit) {
   if (suit == 1) printf("| \xE2\x99\xA3 {(|\n") ; // CLUBS
   if (suit == 2) printf("| \xE2\x99\xA6 {(|\n") ; // DIAMONDS
   if (suit == 3) printf("| \xE2\x99\xA0 {(|\n") ; // SPADES
-  printf("|   %%|\n") ;
-  printf("|  %%%|\n") ;
-  printf("|_%%%O|\n") ;
+  printf("|   %%%%|\n") ;
+  printf("|  %%%%%%|\n") ;
+  printf("|_%%%%%%O|\n") ;
 }
 void displayKing(int suit) {
   printf(" _____ \n") ;
@@ -160,9 +160,9 @@ void displayKing(int suit) {
   if (suit == 1) printf("| \xE2\x99\xA3 {)|\n") ; // CLUBS
   if (suit == 2) printf("| \xE2\x99\xA6 {)|\n") ; // DIAMONDS
   if (suit == 3) printf("| \xE2\x99\xA0 {)|\n") ; // SPADES
-  printf("|   %%|\n") ;
-  printf("|  %%%|\n") ;
-  printf("|_%%%>|\n") ;
+  printf("|   %%%%|\n") ;
+  printf("|  %%%%%%|\n") ;
+  printf("|_%%%%%%>|\n") ;
 }
 
 void printCard(card c) {
@@ -250,7 +250,7 @@ int blackjack(int money) {
 
 		if (strcmp(command, "hit") == 0) {
 			if (money - bet >= 0) {
-				srand(time(0)) ;
+				//srand(time(0)) ;
         hit(&p,&d) ;
 				/*spin(&slot_machine, bet) ;
 				money += is_win(&slot_machine) * bet ;*/
@@ -262,7 +262,7 @@ int blackjack(int money) {
 				printf("Visit the atm from the main casino floor to refill.\n") ;
 			}
 		}
-		else if (strcmp(command, "hit" == 0)) {
+		else if (strcmp(command, "hit") == 0) {
 
     }
     else if (strcmp(command, "bet") == 0) {
