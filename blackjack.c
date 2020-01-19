@@ -26,7 +26,7 @@ int find_min_sum(player * p) {
     else {
       sum += (p->hand[x]).value ;
     }
-    printf("Value being added: %d\n", (p->hand[x]).value) ;
+    //printf("Value being added: %d\n", (p->hand[x]).value) ;
   }
   return sum ;
 }
@@ -39,15 +39,15 @@ int find_max_sum(player * p) {
     else {
       sum += (p->hand[x]).value ;
     }
-    printf("Value being added: %d\n", (p->hand[x]).value) ;
+    //printf("Value being added: %d\n", (p->hand[x]).value) ;
   }
   return sum ;
 }
 void transferCard(player * p, deck * d) {
-  printf("You are receiving a card!\n");
+  //printf("You are receiving a card!\n");
   p->hand[p->cardsInHand] = d->cards[d->cardsInDeck - 1];
   d->cards[d->cardsInDeck - 1].valid = 1 ;
-  printf("good with setting hand cards from deck\n");
+  //printf("good with setting hand cards from deck\n");
   d->cardsInDeck-- ;
   p->cardsInHand++ ;
 }
@@ -57,10 +57,10 @@ void fold(player * p, deck * d) {
 void deal(player * p, deck * d) {
   //printf("deal is called\n");
   transferCard(p,d) ;
-  printf("first transfer is good\n");
+  //printf("first transfer is good\n");
   transferCard(p,d) ;
-  printf("second transfer is good\n");
-  printf("Added cards to player's hand\n");
+  //printf("second transfer is good\n");
+  //printf("Added cards to player's hand\n");
   p->min_sum = find_min_sum(p) ;
   printf("The min sum: %d\n", p->min_sum);
   p->max_sum = find_max_sum(p) ;
@@ -107,6 +107,234 @@ void shuffle(deck * d) {
 
 // ~~~~~~~~~~~~~~~~ PRINTING FUNCTIONS ~~~~~~~~~~~~~~~~
 // source of ascii art: https://www.asciiart.eu/miscellaneous/playing-cards
+void display2(int suit) {
+  printf(" _____ \n") ;
+  printf("|2    |\n") ;
+  if (suit == 0) {
+    printf("|  %s  |\n", HEART) ;
+    printf("|     |\n") ;
+    printf("|  %s  |\n", HEART) ;
+  }
+  if (suit == 1) {
+    printf("|  %s  |\n", CLUB) ;
+    printf("|     |\n") ;
+    printf("|  %s  |\n", CLUB) ;
+  }
+  if (suit == 2) {
+    printf("|  %s  |\n", DIAMOND) ;
+    printf("|     |\n") ;
+    printf("|  %s  |\n", DIAMOND) ;
+  }
+  if (suit == 3) {
+    printf("|  %s  |\n", SPADE) ;
+    printf("|     |\n") ;
+    printf("|  %s  |\n", SPADE) ;
+  }
+  printf("|____Z|\n") ;
+}
+void display3(int suit) {
+  printf(" _____ \n") ;
+  printf("|3    |\n") ;
+  if (suit == 0) {
+    printf("| %s %s |\n", HEART, HEART) ;
+    printf("|     |\n") ;
+    printf("|  %s  |\n", HEART) ;
+  }
+  if (suit == 1) {
+    printf("| %s %s |\n", CLUB, CLUB) ;
+    printf("|     |\n") ;
+    printf("|  %s  |\n", CLUB) ;
+  }
+  if (suit == 2) {
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+    printf("|     |\n") ;
+    printf("|  %s  |\n", DIAMOND) ;
+  }
+  if (suit == 3) {
+    printf("| %s %s |\n", SPADE, SPADE) ;
+    printf("|     |\n") ;
+    printf("|  %s  |\n", SPADE) ;
+  }
+  printf("|____E|\n") ;
+}
+void display4(int suit) {
+  printf(" _____ \n") ;
+  printf("|4    |\n") ;
+  if (suit == 0) {
+    printf("| %s %s |\n", HEART, HEART) ;
+    printf("|     |\n") ;
+    printf("| %s %s |\n", HEART, HEART) ;
+  }
+  if (suit == 1) {
+    printf("| %s %s |\n", CLUB, CLUB) ;
+    printf("|     |\n") ;
+    printf("| %s %s |\n", CLUB, CLUB) ;
+  }
+  if (suit == 2) {
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+    printf("|     |\n") ;
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+  }
+  if (suit == 3) {
+    printf("| %s %s |\n", SPADE, SPADE) ;
+    printf("|     |\n") ;
+    printf("| %s %s |\n", SPADE, SPADE) ;
+  }
+  printf("|____h|\n") ;
+}
+void display5(int suit) {
+  printf(" _____ \n") ;
+  printf("|5    |\n") ;
+  if (suit == 0) {
+    printf("| %s %s |\n", HEART, HEART) ;
+    printf("|  %s  |\n", HEART) ;
+    printf("| %s %s |\n", HEART, HEART) ;
+  }
+  if (suit == 1) {
+    printf("| %s %s |\n", CLUB, CLUB) ;
+    printf("|  %s  |\n", CLUB) ;
+    printf("| %s %s |\n", CLUB, CLUB) ;
+  }
+  if (suit == 2) {
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+    printf("|  %s  |\n", DIAMOND) ;
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+  }
+  if (suit == 3) {
+    printf("| %s %s |\n", SPADE, SPADE) ;
+    printf("|  %s  |\n", SPADE) ;
+    printf("| %s %s |\n", SPADE, SPADE) ;
+  }
+  printf("|____S|\n") ;
+}
+void display6(int suit) {
+  printf(" _____ \n") ;
+  printf("|6    |\n") ;
+  if (suit == 0) {
+    printf("| %s %s |\n", HEART, HEART) ;
+    printf("| %s %s |\n", HEART, HEART) ;
+    printf("| %s %s |\n", HEART, HEART) ;
+  }
+  if (suit == 1) {
+    printf("| %s %s |\n", CLUB, CLUB) ;
+    printf("| %s %s |\n", CLUB, CLUB) ;
+    printf("| %s %s |\n", CLUB, CLUB) ;
+  }
+  if (suit == 2) {
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+  }
+  if (suit == 3) {
+    printf("| %s %s |\n", SPADE, SPADE) ;
+    printf("| %s %s |\n", SPADE, SPADE) ;
+    printf("| %s %s |\n", SPADE, SPADE) ;
+  }
+  printf("|____9|\n") ;
+}
+void display7(int suit) {
+  printf(" _____ \n") ;
+  printf("|7    |\n") ;
+  if (suit == 0) {
+    printf("| %s %s |\n", HEART, HEART) ;
+    printf("|%s %s %s|\n", HEART, HEART, HEART) ;
+    printf("| %s %s |\n", HEART, HEART) ;
+  }
+  if (suit == 1) {
+    printf("| %s %s |\n", CLUB, CLUB) ;
+    printf("|%s %s %s|\n", CLUB, CLUB, CLUB) ;
+    printf("| %s %s |\n", CLUB, CLUB) ;
+  }
+  if (suit == 2) {
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+    printf("|%s %s %s|\n", DIAMOND, DIAMOND, DIAMOND) ;
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+  }
+  if (suit == 3) {
+    printf("| %s %s |\n", SPADE, SPADE) ;
+    printf("|%s %s %s|\n", SPADE, SPADE, SPADE) ;
+    printf("| %s %s |\n", SPADE, SPADE) ;
+  }
+  printf("|____L|\n") ;
+}
+void display8(int suit) {
+  printf(" _____ \n") ;
+  printf("|8    |\n") ;
+  if (suit == 0) {
+    printf("|%s %s %s|\n", HEART, HEART, HEART) ;
+    printf("| %s %s |\n", HEART, HEART) ;
+    printf("|%s %s %s|\n", HEART, HEART, HEART) ;
+  }
+  if (suit == 1) {
+    printf("|%s %s %s|\n", CLUB, CLUB, CLUB) ;
+    printf("| %s %s |\n", CLUB, CLUB) ;
+    printf("|%s %s %s|\n", CLUB, CLUB, CLUB) ;
+  }
+  if (suit == 2) {
+    printf("|%s %s %s|\n", DIAMOND, DIAMOND, DIAMOND) ;
+    printf("| %s %s |\n", DIAMOND, DIAMOND) ;
+    printf("|%s %s %s|\n", DIAMOND, DIAMOND, DIAMOND) ;
+  }
+  if (suit == 3) {
+    printf("|%s %s %s|\n", SPADE, SPADE, SPADE) ;
+    printf("| %s %s |\n", SPADE, SPADE) ;
+    printf("|%s %s %s|\n", SPADE, SPADE, SPADE) ;
+  }
+  printf("|____8|\n") ;
+}
+void display9(int suit) {
+  printf(" _____ \n") ;
+  printf("|9    |\n") ;
+  if (suit == 0) {
+    printf("|%s %s %s|\n", HEART, HEART, HEART) ;
+    printf("|%s %s %s|\n", HEART, HEART, HEART) ;
+    printf("|%s %s %s|\n", HEART, HEART, HEART) ;
+  }
+  if (suit == 1) {
+    printf("|%s %s %s|\n", CLUB, CLUB, CLUB) ;
+    printf("|%s %s %s|\n", CLUB, CLUB, CLUB) ;
+    printf("|%s %s %s|\n", CLUB, CLUB, CLUB) ;
+  }
+  if (suit == 2) {
+    printf("|%s %s %s|\n", DIAMOND, DIAMOND, DIAMOND) ;
+    printf("|%s %s %s|\n", DIAMOND, DIAMOND, DIAMOND) ;
+    printf("|%s %s %s|\n", DIAMOND, DIAMOND, DIAMOND) ;
+  }
+  if (suit == 3) {
+    printf("|%s %s %s|\n", SPADE, SPADE, SPADE) ;
+    printf("|%s %s %s|\n", SPADE, SPADE, SPADE) ;
+    printf("|%s %s %s|\n", SPADE, SPADE, SPADE) ;
+  }
+  printf("|____6|\n") ;
+}
+void display10(int suit) {
+  printf(" _____ \n") ;
+  if (suit == 0) {
+    printf("|10 %s |\n", HEART) ;
+    printf("|%s %s %s|\n", HEART, HEART, HEART) ;
+    printf("|%s %s %s|\n", HEART, HEART, HEART) ;
+    printf("|%s %s %s|\n", HEART, HEART, HEART) ;
+  }
+  if (suit == 1) {
+    printf("|10 %s |\n", CLUB) ;
+    printf("|%s %s %s|\n", CLUB, CLUB, CLUB) ;
+    printf("|%s %s %s|\n", CLUB, CLUB, CLUB) ;
+    printf("|%s %s %s|\n", CLUB, CLUB, CLUB) ;
+  }
+  if (suit == 2) {
+    printf("|10 %s |\n", DIAMOND) ;
+    printf("|%s %s %s|\n", DIAMOND, DIAMOND, DIAMOND) ;
+    printf("|%s %s %s|\n", DIAMOND, DIAMOND, DIAMOND) ;
+    printf("|%s %s %s|\n", DIAMOND, DIAMOND, DIAMOND) ;
+  }
+  if (suit == 3) {
+    printf("|10 %s |\n", SPADE) ;
+    printf("|%s %s %s|\n", SPADE, SPADE, SPADE) ;
+    printf("|%s %s %s|\n", SPADE, SPADE, SPADE) ;
+    printf("|%s %s %s|\n", SPADE, SPADE, SPADE) ;
+  }
+  printf("|___0I|\n") ;
+}
 void displayCard(int num) {
   printf(" _____ \n") ;
   printf("|%d    |\n", num) ;
@@ -121,23 +349,20 @@ void displayAce(int suit) {
   printf(" _____ \n") ;
   printf("|A _  |\n") ;
   printf("|     |\n") ;
+  if (suit == 0) printf("|  %s  |\n", HEART) ;
+  if (suit == 1) printf("|  %s  |\n", CLUB) ;
+  if (suit == 2) printf("|  %s  |\n", DIAMOND) ;
+  if (suit == 3) printf("|  %s  |\n", SPADE) ;
   printf("|     |\n") ;
-
-  ////////// NOT DONE HERE YET!!!!!!!!!!!!
-  ////////// NOT DONE HERE YET!!!!!!!!!!!!
-  ////////// NOT DONE HERE YET!!!!!!!!!!!!
-  ////////// NOT DONE HERE YET!!!!!!!!!!!!
-  ////////// NOT DONE HERE YET!!!!!!!!!!!!
-  ////////// NOT DONE HERE YET!!!!!!!!!!!!
-  ////////// NOT DONE HERE YET!!!!!!!!!!!!
+  printf("|____V|\n") ;
 }
 void displayJack(int suit) {
   printf(" _____ \n") ;
   printf("|J  ww|\n") ;
-  if (suit == 0) printf("| \xE2\x99\xA5 {)|\n") ; // HEARTS
-  if (suit == 1) printf("| \xE2\x99\xA3 {)|\n") ; // CLUBS
-  if (suit == 2) printf("| \xE2\x99\xA6 {)|\n") ; // DIAMONDS
-  if (suit == 3) printf("| \xE2\x99\xA0 {)|\n") ; // SPADES
+  if (suit == 0) printf("| %s {)|\n", HEART) ;
+  if (suit == 1) printf("| %s {)|\n", CLUB) ;
+  if (suit == 2) printf("| %s {)|\n", DIAMOND) ;
+  if (suit == 3) printf("| %s {)|\n", SPADE) ;
   printf("|   %% |\n") ;
   printf("|   %% |\n") ;
   printf("|__%%%%[|\n") ;
@@ -145,10 +370,10 @@ void displayJack(int suit) {
 void displayQueen(int suit) {
   printf(" _____ \n") ;
   printf("|Q  ww|\n") ;
-  if (suit == 0) printf("| \xE2\x99\xA5 {(|\n") ; // HEARTS
-  if (suit == 1) printf("| \xE2\x99\xA3 {(|\n") ; // CLUBS
-  if (suit == 2) printf("| \xE2\x99\xA6 {(|\n") ; // DIAMONDS
-  if (suit == 3) printf("| \xE2\x99\xA0 {(|\n") ; // SPADES
+  if (suit == 0) printf("| %s {(|\n", HEART) ;
+  if (suit == 1) printf("| %s {(|\n", CLUB) ;
+  if (suit == 2) printf("| %s {(|\n", DIAMOND) ;
+  if (suit == 3) printf("| %s {(|\n", SPADE) ;
   printf("|   %%%%|\n") ;
   printf("|  %%%%%%|\n") ;
   printf("|_%%%%%%O|\n") ;
@@ -156,35 +381,33 @@ void displayQueen(int suit) {
 void displayKing(int suit) {
   printf(" _____ \n") ;
   printf("|K  WW|\n") ;
-  if (suit == 0) printf("| \xE2\x99\xA5 {)|\n") ; // HEARTS
-  if (suit == 1) printf("| \xE2\x99\xA3 {)|\n") ; // CLUBS
-  if (suit == 2) printf("| \xE2\x99\xA6 {)|\n") ; // DIAMONDS
-  if (suit == 3) printf("| \xE2\x99\xA0 {)|\n") ; // SPADES
+  if (suit == 0) printf("| %s {)|\n", HEART) ; // HEARTS
+  if (suit == 1) printf("| %s {)|\n", CLUB) ; // CLUBS
+  if (suit == 2) printf("| %s {)|\n", DIAMOND) ; // DIAMONDS
+  if (suit == 3) printf("| %s {)|\n", SPADE) ; // SPADES
   printf("|   %%%%|\n") ;
   printf("|  %%%%%%|\n") ;
   printf("|_%%%%%%>|\n") ;
 }
 
 void printCard(card c) {
-  // We start with printing the value
   printf("value from printcard: %d\n", c.value) ;
-  if (c.value > ACE && c.value < JACK) displayCard(c.value) ;
-  else if (c.value == ACE) displayAce(c.suit) ;
+  if (c.value == ACE) displayAce(c.suit) ;
+  else if (c.value == 2) display2(c.suit) ;
+  else if (c.value == 3) display3(c.suit) ;
+  else if (c.value == 4) display4(c.suit) ;
+  else if (c.value == 5) display5(c.suit) ;
+  else if (c.value == 6) display6(c.suit) ;
+  else if (c.value == 7) display7(c.suit) ;
+  else if (c.value == 8) display8(c.suit) ;
+  else if (c.value == 9) display9(c.suit) ;
+  else if (c.value == 10) display10(c.suit) ;
   else if (c.value == JACK) displayJack(c.suit) ;
   else if (c.value == QUEEN) displayQueen(c.suit) ;
   else if (c.value == KING) displayKing(c.suit) ;
   else {
     // NOT GOOD!!
     printf("ERROR WITH IDENTIFYING VALUE OF A CARD!!\n") ;
-  }
-  // And now we print out the suit
-  if (c.suit == 0) printf(" of HEARTS\n") ;
-  else if (c.suit == 2) printf(" of DIAMONDS\n") ;
-  else if (c.suit == 1) printf(" of CLUBS\n") ;
-  else if (c.suit == 3) printf(" of SPADES\n") ;
-  else {
-    // NOT GOOD!
-    printf("ERROR WITH IDENTIFYING SUIT OF A CARD!!\n") ;
   }
 }
 
@@ -294,17 +517,17 @@ int main() {
   deck d ; // we are creating the deck
   //printf("*****************************************\n\n\n");
   d = makedeck() ;
-  printf("Deck has been made! Here it is:\n");
+  /*printf("Deck has been made! Here it is:\n");
   printDeck(&d) ;
-  printf("*****************************************\n\n\n");
+  printf("*****************************************\n\n\n");*/
   shuffle(&d) ;
-  printf("Deck has been shuffled! Here it is:\n");
+  /*printf("Deck has been shuffled! Here it is:\n");
   printDeck(&d) ;
-  printf("*****************************************\n\n\n");
+  printf("*****************************************\n\n\n");*/
 	// now onto the player
   player p ;
   p.cardsInHand = 0 ;
-  printf("deal is called\n");
+  //printf("deal is called\n");
   deal(&p, &d) ;
   printf("Here are the player's cards:\n");
   printCard(p.hand[0]) ;
@@ -317,26 +540,14 @@ int main() {
   printf("Here are the dealer's cards:\n");
   printCard(dealer.hand[0]) ;
   printCard(dealer.hand[1]) ;
-  printf("The smallest sum of the dealer's cards is: %d\n", find_min_sum(&dealer));
-  printf("The largest sum of the dealer's cards is: %d\n", find_max_sum(&dealer));
-  printf("*****************************************\n\n\n");
-  printf("Let's give the player another card!\n");
+  printf("The smallest sum of the dealer's cards is: %d\n", find_min_sum(&dealer)) ;
+  printf("The largest sum of the dealer's cards is: %d\n", find_max_sum(&dealer)) ;
+  printf("*****************************************\n") ;
+  printf("Let's give the player another card!\n") ;
   hit(&p, &d) ;
   printCard(p.hand[0]) ;
   printCard(p.hand[1]) ;
   printCard(p.hand[2]) ;
-	/*player dealer ; // now onto the dealer
-  dealer.cardsInHand = 0 ;
-  deal(&dealer, &d) ;
-  printf("able to deal\n");
-  printf("value: %d\n", (p.hand[0]).value);
-  printCard(p.hand[0]) ;
-  printf("printed first card!!\n\n");
-  printCard(p.hand[1]) ;
-  printf("The sum of the player's cards is: %d\n", p.sum) ;
-  printCard(&(dealer.hand[0])) ;
-  printCard(&(dealer.hand[1])) ;
-  printf("The sum of the dealer's cards is: %d\n", dealer.sum) ;*/
 
   char response [100] ; // this will be used to hold the player's response to their options
   /*while (1) {
