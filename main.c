@@ -72,16 +72,27 @@ int main(int argc, char const *argv[]) {
 			printf("You're in a casino!\n") ;
 			printf("Possible commands are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 		}
-		else if (strcmp(command, "") == 0){}
-		else {
-			system("clear");
-			printf("You entered: \"%s\"\n", command);
-			printf("You did not enter a valid command. Possible commands are:  \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
+		else if (strcmp(command, "") == 0) {
+			printf("Hmmmmmm. Do you want to enter a command?\n") ;
 		}
-		printf("\nYou decide to do over to the: ");
-		fgets(command, 1024, stdin);
-		*strchr(command, '\n') = '\0';
+		else {
+			system("clear") ;
+			printf("You entered: \"%s\"\n", command) ;
+			printf("You did not enter a valid command. Possible commands are:  \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n") ;
+		}
+		printf("\nYou decide to do over to the: ") ;
+		fgets(command, 1024, stdin) ;
+		*strchr(command, '\n') = '\0' ;
 	}
-	printf("\nYou have left the casino.\n");
-	return 0;
+	printf("\nYou have left the casino. Thank you for your time.\n") ;
+	/*printf(" __      __\n") ;
+	printf(" _\    /_ ") ;
+ \ _\  /_ /
+  \ _\/_ /_ _
+  |_____/_/ /|
+  (  (_)__)J-)
+  (  /`.,   /
+   \/  ;   /
+    | === |dwb\n", );*/
+	return 0 ;
 }
