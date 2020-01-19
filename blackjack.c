@@ -106,14 +106,73 @@ void shuffle(deck * d) {
 }
 
 // ~~~~~~~~~~~~~~~~ PRINTING FUNCTIONS ~~~~~~~~~~~~~~~~
+// source of ascii art: https://www.asciiart.eu/miscellaneous/playing-cards
+void displayCard(int num) {
+  printf(" _____ \n") ;
+  printf("|%d    |\n", num) ;
+  printf("|  \xE2\x99\xA0  |\n") ;
+  printf("|     |\n") ;
+  printf("|  \xE2\x99\xA0  |\n") ;
+  printf("|____Z|\n") ;
+  // ALSO NEED TO CORRECT BOTTOM OF CARD FOR EACH NUM AND THE QUANTITY OF THE SUIT
+}
+
+void displayAce(int suit) {
+  printf(" _____ \n") ;
+  printf("|A _  |\n") ;
+  printf("|     |\n") ;
+  printf("|     |\n") ;
+
+  ////////// NOT DONE HERE YET!!!!!!!!!!!!
+  ////////// NOT DONE HERE YET!!!!!!!!!!!!
+  ////////// NOT DONE HERE YET!!!!!!!!!!!!
+  ////////// NOT DONE HERE YET!!!!!!!!!!!!
+  ////////// NOT DONE HERE YET!!!!!!!!!!!!
+  ////////// NOT DONE HERE YET!!!!!!!!!!!!
+  ////////// NOT DONE HERE YET!!!!!!!!!!!!
+}
+void displayJack(int suit) {
+  printf(" _____ \n") ;
+  printf("|J  ww|\n") ;
+  if (suit == 0) printf("| \xE2\x99\xA5 {)|\n") ; // HEARTS
+  if (suit == 1) printf("| \xE2\x99\xA3 {)|\n") ; // CLUBS
+  if (suit == 2) printf("| \xE2\x99\xA6 {)|\n") ; // DIAMONDS
+  if (suit == 3) printf("| \xE2\x99\xA0 {)|\n") ; // SPADES
+  printf("|   % |\n") ;
+  printf("|   % |\n") ;
+  printf("|__%%[|\n") ;
+}
+void displayQueen(int suit) {
+  printf(" _____ \n") ;
+  printf("|Q  ww|\n") ;
+  if (suit == 0) printf("| \xE2\x99\xA5 {(|\n") ; // HEARTS
+  if (suit == 1) printf("| \xE2\x99\xA3 {(|\n") ; // CLUBS
+  if (suit == 2) printf("| \xE2\x99\xA6 {(|\n") ; // DIAMONDS
+  if (suit == 3) printf("| \xE2\x99\xA0 {(|\n") ; // SPADES
+  printf("|   %%|\n") ;
+  printf("|  %%%|\n") ;
+  printf("|_%%%O|\n") ;
+}
+void displayKing(int suit) {
+  printf(" _____ \n") ;
+  printf("|K  WW|\n") ;
+  if (suit == 0) printf("| \xE2\x99\xA5 {)|\n") ; // HEARTS
+  if (suit == 1) printf("| \xE2\x99\xA3 {)|\n") ; // CLUBS
+  if (suit == 2) printf("| \xE2\x99\xA6 {)|\n") ; // DIAMONDS
+  if (suit == 3) printf("| \xE2\x99\xA0 {)|\n") ; // SPADES
+  printf("|   %%|\n") ;
+  printf("|  %%%|\n") ;
+  printf("|_%%%>|\n") ;
+}
+
 void printCard(card c) {
   // We start with printing the value
-  printf("value from printcard: %d\n",c.value);
-  if (c.value > ACE && c.value < JACK) printf("%d", c.value) ;
-  else if (c.value == ACE) printf("A") ;
-  else if (c.value == JACK) printf("J") ;
-  else if (c.value == QUEEN) printf("Q") ;
-  else if (c.value == KING) printf("K") ;
+  printf("value from printcard: %d\n", c.value) ;
+  if (c.value > ACE && c.value < JACK) displayCard(c.value) ;
+  else if (c.value == ACE) displayAce(c.suit) ;
+  else if (c.value == JACK) displayJack(c.suit) ;
+  else if (c.value == QUEEN) displayQueen(c.suit) ;
+  else if (c.value == KING) displayKing(c.suit) ;
   else {
     // NOT GOOD!!
     printf("ERROR WITH IDENTIFYING VALUE OF A CARD!!\n") ;
@@ -157,7 +216,7 @@ int blackjack(int money) {
   player p ;
   p.cardsInHand = 0 ;
   player dealer ;
-  d.cardsInHand = 0 ;
+  dealer.cardsInHand = 0 ;
   deck d = makedeck() ;
   printf("Let's begin! It's you and the dealer!\n\n") ;
   printf("\nYou currently have $%i\n", money) ;
