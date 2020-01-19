@@ -21,5 +21,6 @@
 
 #include "blackjack.h"
 #include "slots.h"
+#include "roulette.h"
 
 //#undef main
