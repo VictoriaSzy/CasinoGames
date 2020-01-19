@@ -101,8 +101,8 @@ int slots_game(int money) {
 
 				printf("\nYou currently have $%i dollars\n", money);
 			} else {
-				printf("You do not have enough money\n");
-				printf("Visit the atm from the main casino floor to refill\n");
+				printf("You do not have enough money to pay the bet\n");
+				printf("Visit the atm from the main casino floor to refill, or lower your bet\n");
 			}
 		}
 		else if (strcmp(command, "bet") == 0){
@@ -112,6 +112,10 @@ int slots_game(int money) {
 			fgets(newBid, 1000, stdin);
 			*strchr(newBid, '\n') = '\0';
 			bet = atoi(newBid);
+			if (bet < 0){
+				bet = 0;
+				printf("Nice Try\n");
+			}
 		}
 		else if (strcmp(command, "help") == 0){
 			printf("\nType in commands to play. The Commands are: \n");
