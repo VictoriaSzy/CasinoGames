@@ -35,3 +35,8 @@ deck makedeck() ;
 void fold(player * p, deck * d) ;
 void hit(player *p, deck * d) ;
 int blackjack(int money) ;
+void displayCard(int num) ;
+void displayAce(int suit) ;
+void displayJack(int suit) ;
+void displayQueen(int suit) ;
+void displayKing(int suit) ;
