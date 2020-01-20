@@ -80,7 +80,7 @@ int super_sleep(int milliseconds){
   return nanosleep(&ts, NULL);
 }
 
-int spin(){
+int spin(int money){
 	printf("Enter your bets and then enter spin when you are done.\n");
 	printf("\nPossible bets are: betting on a single number from 1-24 or betting on even vs odd\n\n");
 	char newBid[100];
@@ -127,6 +127,14 @@ int spin(){
 			*strchr(amount, '\n') = '\0';
 			bid = atoi(amount);
 
+			while (bid < 0 || bid > money){
+				printf("Invalid bet!! You have $%i\n", money);
+				printf("Enter the amount you want place on this bet: ");
+				fgets(amount, 100, stdin);
+				*strchr(amount, '\n') = '\0';
+				bid = atoi(amount);
+			}
+
 			if (strcmp(newBid, "odd") == 0){
 				odd = bid;
 			}else if (strcmp(newBid, "even") == 0){
@@ -135,21 +143,15 @@ int spin(){
 				amounts[a] = bid;
 				++a;
 			}
+			money -= bid; 
+			printf("You are now holding $%i\n", money);
 	  }
 	}
-
-	printf("Your bets are:\n");
-	for (int i = 0; i < n; i++){
-		printf("$%i on %i\n",amounts[i], nums[i]);
-	}
-	if (odd > 0){printf("%%i on odds\n", odd);}
-	if (even > 0){printf("%%i on evens\n", even);}
-
 
 	int spins = rand() % 2 + 2;
 	char * wheel[24] = {"15","19","04","21","02","17","06","13","11","08","23","10","05","24","16","01","20","14","09","22","18","07","12","03"};
 	int at = 0;
-	int b = 51;//rand() % 52; //0 - 51
+	int b = rand() % 52; //0 - 51
 	int w = rand() % 24;
 	// b is for ball
 	/*
@@ -181,6 +183,14 @@ N  18                  088 N
   //bp(,b)
 	for (int s = 0; s < spins * 52+1; s++){
 		system("clear");
+		printf("Your bets are:\n");
+		for (int i = 0; i < n; i++){
+			printf("$%i on %i\n",amounts[i], nums[i]);
+		}
+		if (odd > 0){printf("$%i on odds\n", odd);}
+		if (even > 0){printf("$%i on evens\n", even);}
+		printf("==================\n\n");
+
 		printf("         ##########\n");
 		printf("      ### %c%c%c%c%c%c%c%c ###\n",bp(0,b),bp(1,b),bp(2,b),bp(3,b),bp(4,b),bp(5,b),bp(6,b),bp(7,b));
 		printf("    ## %c%c%c%s#%s#%s%c%c%c ##\n", bp(49,b), bp(50,b),bp(51,b), wheel[w], wheel[(w+1)%24], wheel[(w+2)%24], bp(8,b),bp(9,b),bp(10,b));
@@ -221,12 +231,30 @@ N  18                  088 N
 	printf("      ### %i%i%i%i%i%i%i%i ###\n", bw[33],bw[32],bw[31],bw[30],bw[29],bw[28],bw[27],bw[26]);
 	printf("         ##########\n");
 	*/
-	printf("B: %i W: %i\n bw: %i\n",b,w, bw[b]);
-	printf("The number is: %s \n",wheel[(w+bw[b]) % 24]);
+	//printf("B: %i W: %i\n bw: %i\n",b,w, bw[b]);
+	//printf("money: %i\n", money);
+
+	printf("The the ball landed on: %s \n",wheel[(w+bw[b]) % 24]);
+	int win = atoi(wheel[(w+bw[b]) % 24]);
+	for (int i = 0; i < n; i++){
+		if (win == nums[i]){
+			money += amounts[i] * 24;
+			printf("YOU WON!!!!\n");
+			printf("You've earned %i\n", amounts[i] * 24);
+		}
+	}
+	if (win % 2 == 0){
+		money += even * 2;
+	}else{
+		money += odd * 2;
+	}
+	printf("\nYou now have $%i dollars\n", money);
+
+	return money;
 }
 int main(int argc, char const *argv[])
 {
-	roulette_game(100);
+	roulette_game(500);
 	return 0;
 }
 int roulette_game(int money) {
@@ -249,7 +277,7 @@ int roulette_game(int money) {
 
 		if (strcmp(command, "play") == 0){
 			srand(time(0));
-			money = spin();
+			money = spin(money);
 		}
 		else if (strcmp(command, "help") == 0){
 			printf("\nType in commands to play. The Commands are: \n");

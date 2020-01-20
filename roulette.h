@@ -24,7 +24,7 @@ typedef struct{
 	int amounts[26];
 }bets;
 
-int spin() ;
+int spin(int money) ;
 int is_win() ;
 int roulette_game(int money);
 //int super_sleep(int milliseconds);
