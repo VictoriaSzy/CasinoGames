@@ -50,3 +50,5 @@ void display7(int suit) ;
 void display8(int suit) ;
 void display9(int suit) ;
 void display10(int suit) ;
+
+int play_blackjack(int money);

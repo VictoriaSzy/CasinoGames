@@ -420,20 +420,13 @@ void printDeck(deck * d) {
 
 // ~~~~~~~~~~~~~~~~ GAME FUNCTION ~~~~~~~~~~~~~~~~
 
-/*
-int super_sleep(int milliseconds) {
-	struct timespec ts ;
-  ts.tv_sec = milliseconds / 1000 ;
-  ts.tv_nsec = (milliseconds % 1000) * 1000000 ;
-  return nanosleep(&ts, NULL) ;
-}*/
-
-int blackjack(int money) {
-  printf("Woohoo! Let's play Blackjack!!\n") ;
-  printf("You are given 2 cards. Try to get the highest sum without going over 21 (or \"busting\").\n") ;
-  printf("Note: You currently have $%i\n", money) ;
-
-  char command[128] = "help" ;
+int play_blackjack(int money){
+  // this handles actually playing
+  printf("Let's begin! It's you and the dealer!\n\n") ;
+  printf("\nYou currently have $%i\n", money) ;
+  printf("The dealer has received their starting cards.\n") ;
+  deal(&dealer, &d) ;
+  char command[128];
   int bet = 10 ; // let's start with a simple bet of $10
 
   player p ;
@@ -441,65 +434,35 @@ int blackjack(int money) {
   player dealer ;
   dealer.cardsInHand = 0 ;
   deck d = makedeck() ;
-  printf("Let's begin! It's you and the dealer!\n\n") ;
-  printf("\nYou currently have $%i\n", money) ;
-  printf("The dealer has received their starting cards.\n") ;
-  deal(&dealer, &d) ;
+
+  while (strcmp(command, "stand") != 0){
+    hit(p, d); //you make this
+  }
+
+}
+int super_sleep(int milliseconds) {
+	struct timespec ts ;
+  ts.tv_sec = milliseconds / 1000 ;
+  ts.tv_nsec = (milliseconds % 1000) * 1000000 ;
+  return nanosleep(&ts, NULL) ;
+}
+
+int blackjack(int money) {
+  char command[128] = "help" ;
 
 	while (strcmp(command, "exit") != 0) {
 		system("clear") ;
-    if (money - bet >= 0) {
-
-    }
-    else {
-      if (strcmp(command, "new game") == 0) {
-        /* if the user types in new game, we'll check if their bet is ok first
-        if the user is able to make a new game with that bet, the dealer will get new cards and so will the player
-        we will have to clear the system again
-        */
-        if (money - bet < 0) {
-          printf("You do not have enough money to make this bet!\n") ;
-  				printf("Visit the atm from the main casino floor to get more money!\n") ;
-        }
-        else {
-          // the user is able to make the bet
-        }
-
-        deal(&dealer, &d) ;
-      }
-    }
-    printf("Here are the dealer's cards:\n") ;
-    deal(&dealer, &d) ;
-
-		if (strcmp(command, "hit") == 0) {
-			if (money - bet >= 0) {
-				//srand(time(0)) ;
-        hit(&p,&d) ;
-				/*spin(&slot_machine, bet) ;
-				money += is_win(&slot_machine) * bet ;*/
-
-				printf("\nYou currently have $%i dollars\n", money) ;
-			}
-      else {
-				printf("You do not have enough money to make this bet!\n") ;
-				printf("Visit the atm from the main casino floor to refill.\n") ;
-			}
-		}
-		else if (strcmp(command, "hit") == 0) {
-
-    }
-    else if (strcmp(command, "bet") == 0) {
-			printf("Your current bet is $%i\n", bet) ;
-			printf("Enter the amount you want to bid: ") ;
-			char newBid[1000] ;
-			fgets(newBid, 1000, stdin) ;
-			* strchr(newBid, '\n') = '\0' ;
-			bet = atoi(newBid) ;
-		}
-		else if (strcmp(command, "help") == 0) {
+    printf("Woohoo! Let's play Blackjack!!\n") ;
+    printf("You are given 2 cards. Try to get the highest sum without going over 21 (or \"busting\").\n") ;
+    printf("Note: You currently have $%i\n", money) ;
+		
+    if (strcmp(command, "help") == 0) {
 			printf("\nType commands to play. The commands are: \n") ;
 			printf("\t-play\n\t  -Type \"play\" to insert your bet and get the first 2 cards that you are dealt\n\t-bet\n\t  -Type \"bet\" to change the amount of your bet\n\t-help\n\t-exit\n") ;
 		}
+    else if (strcmp(command, "play") == 0){
+      money = play_blackjack(money);
+    }
 		else {
 			printf("You entered: \"%s\"\n", command) ;
 			printf("This isn't a valid command. Possible commands include: \n\t-play\n\t-bet\n\t-help\n\t-exit\n") ;
