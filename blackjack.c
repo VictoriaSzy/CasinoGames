@@ -425,19 +425,27 @@ int play_blackjack(int money){
   printf("Let's begin! It's you and the dealer!\n\n") ;
   printf("\nYou currently have $%i\n", money) ;
   printf("The dealer has received their starting cards.\n") ;
-  deal(&dealer, &d) ;
-  char command[128];
-  int bet = 10 ; // let's start with a simple bet of $10
+  int bet; // let's start with a simple bet of $10
+
+  //You should ask for an initial bet (I believe that is the only bet that is used)
 
   player p ;
   p.cardsInHand = 0 ;
   player dealer ;
   dealer.cardsInHand = 0 ;
   deck d = makedeck() ;
+  deal(&dealer, &d) ;
 
+  char command[128];
   while (strcmp(command, "stand") != 0){
     hit(p, d); //you make this
   }
+  //after hitting it is the dealers turn to hit
+
+  // then we see who won 
+
+
+  //why don't you look at https://www.arkadium.com/games/blackjack/ to see how to play blackjack
 
 }
 int super_sleep(int milliseconds) {
