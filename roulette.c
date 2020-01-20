@@ -73,14 +73,14 @@ NN                    NN
         NNNNNNNN
   */
 #include "roulette.h"
-int super_sleep(int milliseconds){
+/*int super_sleep(int milliseconds){
 	struct timespec ts;
   ts.tv_sec = milliseconds / 1000;
   ts.tv_nsec = (milliseconds % 1000) * 1000000;
   return nanosleep(&ts, NULL);
-}
+}*/
 
-int spin(int money){
+int roulette_spin(int money){
 	printf("Enter your bets and then enter spin when you are done.\n");
 	printf("\nPossible bets are: betting on a single number from 1-24 or betting on even vs odd\n\n");
 	char newBid[100];
@@ -252,11 +252,11 @@ N  18                  088 N
 
 	return money;
 }
-int main(int argc, char const *argv[])
+/*int main(int argc, char const *argv[])
 {
 	roulette_game(500);
 	return 0;
-}
+}*/
 int roulette_game(int money) {
   printf("It's time to play with the Slot Machines!\n") ;
   printf("Match three numbers to win the amount you bet or more.\n") ;
@@ -277,7 +277,7 @@ int roulette_game(int money) {
 
 		if (strcmp(command, "play") == 0){
 			srand(time(0));
-			money = spin(money);
+			money = roulette_spin(money);
 		}
 		else if (strcmp(command, "help") == 0){
 			printf("\nType in commands to play. The Commands are: \n");
