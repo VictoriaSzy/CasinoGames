@@ -419,7 +419,25 @@ void printDeck(deck * d) {
 }
 
 // ~~~~~~~~~~~~~~~~ GAME FUNCTION ~~~~~~~~~~~~~~~~
+/* I think it should look like this
+Dealer's cards:
+ _____   _____
+|6    | |     |
+| ♦ ♦ | |     |
+| ♦ ♦ | |     |
+| ♦ ♦ | |     |
+|____9| |_____|
 
+Your cards:
+ _____   _____
+|6    | |8    |
+| ♥ ♥ | |♦ ♦ ♦|
+| ♥ ♥ | | ♦ ♦ |
+| ♥ ♥ | |♦ ♦ ♦|
+|____9| |____8|
+
+You can hit or stand: 
+*/
 int play_blackjack(int money){
   // this handles actually playing
   printf("Let's begin! It's you and the dealer!\n\n") ;
