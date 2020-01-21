@@ -38,4 +38,4 @@ void hit(player *p, deck * d) ;
 int blackjack(int money) ;
 void displayCards(player * p) ;
 void beginDisplayDealer(player * dealer) ;
-int play_blackjack(int money, int bet) ;
+int play_blackjack(int money, int bet, deck * dk);

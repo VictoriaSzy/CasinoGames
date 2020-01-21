@@ -64,11 +64,12 @@ deck makedeck() {
   int suit, x ;
   for (int suit = 0 ; suit < 4 ; suit++) {
     for (x = 0 ; x < 13 ; x++) {
-      card * c = calloc(sizeof(card), 1) ;
+      //card * c = calloc(1,sizeof(int)*3) ;
+      card * c = &d.cards[x + 13 * suit];
   		c->suit = suit ;
   		c->value = x + 1 ;
       c->valid = 0 ;
-  		d.cards[x + 13 * suit] = *c ;
+  		//d.cards[x + 13 * suit] = *c ;
   	}
   }
   d.cardsInDeck = 52 ;
@@ -354,15 +355,18 @@ int sum(int small, int large){
 }
 
 // ~~~~~~~~~~~~~~~~ GAME FUNCTION ~~~~~~~~~~~~~~~~
-int play_blackjack(int money, int bet) {
+int play_blackjack(int money, int bet, deck * dk) {
   // this handles actually playing
+  system("clear");
   printf("Let's begin! It's you and the dealer!\n") ;
   printf("The dealer has received their starting cards.\n") ;
+
+  deck d = *dk;
+
   player p ;
   p.cardsInHand = 0 ;
   player dealer ;
   dealer.cardsInHand = 0 ;
-  deck d = makedeck() ;
   int rr = rand() % 25 ;
   for (int x = 0 ; x < rr ; x++) {
     // shuffle the deck a random amount of times
@@ -383,7 +387,7 @@ int play_blackjack(int money, int bet) {
   while (strcmp(command, "stand") != 0) {
     if (strcmp(command, "exit") == 0 || strcmp(command, "surrender") == 0) return money - bet ; // surrender
     hit(&p, &d) ;
-    super_sleep(300);
+    //super_sleep(300);
     if (find_min_sum(&p) > 21) {
       printf("You have BUSTED!\n") ;
       system("clear");
@@ -418,7 +422,7 @@ int play_blackjack(int money, int bet) {
   printf("Sum: %d\n", sum(find_min_sum(&p), find_max_sum(&p)) );
   while (sum(find_min_sum(&dealer), find_max_sum(&dealer)) < sum(find_min_sum(&p), find_max_sum(&p))) {
     hit(&dealer, &d) ; // just make it hit if the sum is less than 16
-    super_sleep(300); 
+    //super_sleep(300); 
     system("clear");
     printf("Dealer:\n") ;
     displayCards(&dealer) ;
@@ -473,13 +477,16 @@ int play_blackjack(int money, int bet) {
 }
 
 int blackjack(int money) {
+  system("clear") ;
+  printf("Woohoo! Let's play Blackjack!!\n") ;
+  printf("You are given 2 cards. Try to get the highest sum without going over 21 (or \"busting\").\n") ;
+  printf("Note: You currently have $%i\n", money) ;
   char command[128] = "help" ;
   int bet = 10 ;
+  deck d = makedeck() ;
 	while (strcmp(command, "exit") != 0) {
-		system("clear") ;
-    printf("Woohoo! Let's play Blackjack!!\n") ;
-    printf("You are given 2 cards. Try to get the highest sum without going over 21 (or \"busting\").\n") ;
-    printf("Note: You currently have $%i\n", money) ;
+    //super_sleep(1000);
+    system("clear");
     if (strcmp(command, "help") == 0) {
 			printf("\nType commands to play. The commands are: \n") ;
 			printf("      -play\n            - Type \"play\" to insert your bet and get the first 2 cards that you are dealt\n") ;
@@ -503,7 +510,7 @@ int blackjack(int money) {
     }
     else if (strcmp(command, "play") == 0) {
       srand(time(0));
-      money = play_blackjack(money, bet) ;
+      money = play_blackjack(money, bet, &d) ;
     }
 		else {
 			printf("You entered: \"%s\"\n", command) ;
@@ -514,6 +521,10 @@ int blackjack(int money) {
 		*strchr(command, '\n') = '\0' ;
 	}
 	printf("\nYou are leaving Blackjack!\n") ;
+  //for (int i = 0; i<52; i++){
+  //  printf("%i\n", d.cards[i].value);
+  //}
+  //printf("Done\n");
   return money ;
 }
 /*int main(int argc, char const * argv[]) {
