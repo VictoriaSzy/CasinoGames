@@ -280,6 +280,8 @@ int roulette_game(int money) {
 			money = roulette_spin(money);
 		}
 		else if (strcmp(command, "help") == 0){
+			printf("In roulette you can bet that the ball will stop on a number from 1 through 24 or that the ball will land on an even or odd number\n");
+			printf("The payoff for betting on the right number if 1 to 24 and 1 to 2 for betting on even or odd correctly\n");
 			printf("\nType in commands to play. The Commands are: \n");
 			printf("\t-play\n\t  -Type \"play\"\n\t-help\n\t-exit\n");
 		}
