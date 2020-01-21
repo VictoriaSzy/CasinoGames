@@ -58,5 +58,5 @@ make run
 :goat: I finished the display card functions but they are so long. I think I need to think of a different approach. I also got rid of some warnings when compiling and added a possible ending to main.c.     <br/>
 :squirrel: finished up roulette, making sure the ball's end position correctly corresponds to the number next to it. 
 ### 1/20/2020
-:goat: I rewrote the display card methods and now they don't take up 400 lines or something. I finally got it to work correctly with main and the makefile so blackjack is ready to play!! WOOHOO!!
+:goat: I rewrote the display card methods and now they don't take up 400 lines or something. I finally got it to work correctly with main and the makefile so blackjack is ready to play!! WOOHOO!! <br>
 :squirrel: made the game loop for blackjack. tidied up main.c to work with all the games. changed display for blackjack
