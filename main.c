@@ -19,12 +19,13 @@ void home_message(int money){
 }
 
 int main(int argc, char const *argv[]) {
-	printf("Welcome to the casino!!\n");
+	//printf("Welcome to the casino!!\n");
 	char command[128] = "" ;
 	int money = 500;
 	while (strcmp(command, "exit") != 0){
 		system("clear");
-		printf("Welcome to the casino!!\n");
+		printf("	                        88     \n                                \"\"   \n ,adPPYba, ,adPPYYba, ,adPPYba, 88 8b,dPPYba,   ,adPPYba,   \na8\"     \"\" \"\"     `Y8 I8[    \"\" 88 88P'   `\"8a a8\"     \"8a  \n8b         ,adPPPPP88  `\"Y8ba,  88 88       88 8b       d8  \n\"8a,   ,aa 88,    ,88 aa    ]8I 88 88       88 \"8a,   ,a8\"  \n `\"Ybbd8\"\' `\"8bbdP\"Y8 `\"YbbdP\"\' 88 88       88  `\"YbbdP\"\' \n");
+		printf("\nWelcome to the casino!!\n");
 		printf("Possible places to go to are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 
 		printf("\nYou currently have $%i dollars\n", money) ;
