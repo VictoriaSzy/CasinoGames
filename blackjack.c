@@ -358,8 +358,8 @@ int sum(int small, int large){
 int play_blackjack(int money, int bet, deck * dk) {
   // this handles actually playing
   system("clear");
-  printf("Let's begin! It's you and the dealer!\n") ;
-  printf("The dealer has received their starting cards.\n") ;
+  printf("Let's begin! You the dealer have received their starting cards! \n") ;
+  printf("Betting $%i\n", bet) ;
 
   deck d = *dk;
 
@@ -511,6 +511,7 @@ int blackjack(int money) {
     else if (strcmp(command, "play") == 0) {
       srand(time(0));
       money = play_blackjack(money, bet, &d) ;
+      printf("You now have $%i\n", money);
     }
 		else {
 			printf("You entered: \"%s\"\n", command) ;
