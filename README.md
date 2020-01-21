@@ -13,8 +13,6 @@ Nope!
 make
 make run
 ```
-You will be taken to the home screen. Further directions will appear, but here's an overview of how to use the home screen:
-- 
 
 ## DevLogs:
 :goat: - Victoria's doing<br/>
