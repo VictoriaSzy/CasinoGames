@@ -358,7 +358,7 @@ int sum(int small, int large){
 int play_blackjack(int money, int bet, deck * dk) {
   // this handles actually playing
   system("clear");
-  printf("Let's begin! You the dealer have received their starting cards! \n") ;
+  printf("Let's begin! You and the dealer have received their starting cards! \n") ;
   printf("Betting $%i\n", bet) ;
 
   deck d = *dk;
