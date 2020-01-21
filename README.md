@@ -22,7 +22,7 @@ Systems Period 10    </br>
 :boat: We read through the files to try to understand how to incorporate it into our code.    <br/>
 ### 1/11/2020 - 1/12/2020
 :goat: I was able to download and install SDL2 finally. I experimented with making a window.    <br/>
-:squirrel:     <br/>
+:squirrel: I worked on making the window stay longer.  <br/>
 ### 1/13/2020
 :goat: I tried to load an image and rethought the use of the structs in blackjack.h. We might have to make some changes to that.    <br/>
 ### 1/14/2020
@@ -30,5 +30,20 @@ Systems Period 10    </br>
 :squirrel: Corrected makefile so it can be run on mac.    <br/>
 :boat: We worked on the slots files together and decided on the rules and symbols we would use.    <br/>
 ### 1/15/2020
+:goat: I added the transfercard method and made sure the deal method was being called correctly.    <br/>
+:squirrel: I improved the slots machine file that we started working on in class.    <br/>
 ### 1/16/2020
-:goat: I resolved the issues with blackjack and displaying the card. The pointers are now pointing where they need to and the correct information is being stored.
+:goat: I resolved the issues with blackjack and displaying the card. The pointers are now pointing where they need to and the correct information is being stored.   <br/>
+:squirrel:
+### 1/17/2020
+:goat: I finally found the issue with making the deck by using many, many print statements. I worked on printing a general card and have printCard(card c) but it's not completely working yet.    <br/>
+:squirrel:
+### 1/18/2020
+:goat: I found a really cool way to display the cards but it's going to take a while since each card has a different amount of hearts, spades, clubs, or diamonds on it. I started working on the continous blackjack game function.    <br/>
+:squirrel:
+### 1/19/2020
+:goat: I finished the display card functions but they are so long. I think I need to think of a different approach. I also got rid of some warnings when compiling and added a possible ending to main.c.     <br/>
+:squirrel:
+### 1/20/2020
+:goat: I rewrote the display card methods and now they don't take up 400 lines or something. I finally got it to work correctly with main and the makefile so blackjack is ready to play!! WOOHOO!!
+<img src="https://media.giphy.com/media/26gsfdArwyEnXnDGw/source.gif" width="1500" height="500"/>
