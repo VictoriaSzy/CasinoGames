@@ -505,7 +505,7 @@ int blackjack(int money) {
 	printf("\nYou are leaving Blackjack!\n") ;
   return money ;
 }
-int main(int argc, char const * argv[]) {
+/*int main(int argc, char const * argv[]) {
   blackjack(100) ;
   return 0 ;
-}
+}*/
