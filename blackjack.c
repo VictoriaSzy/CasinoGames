@@ -344,6 +344,14 @@ void displayCards(player * p) {
   }
   printf("\n") ;
 }
+int sum(int small, int large){
+  if (large > 21){
+    return small;
+  }
+  else {
+    return large;
+  }
+}
 
 // ~~~~~~~~~~~~~~~~ GAME FUNCTION ~~~~~~~~~~~~~~~~
 int play_blackjack(int money, int bet) {
@@ -368,54 +376,56 @@ int play_blackjack(int money, int bet) {
   deal(&p, &d) ;
   printf("Your cards:\n") ;
   displayCards(&p) ;
-  printf("Smallest Sum: %d\nLargest Sum: %d\n", find_min_sum(&p), find_max_sum(&p)) ;
+  printf(" Sum: %d\n", sum(find_min_sum(&p), find_max_sum(&p)) );
   printf("\nType in what you want to do (hit or stand): ") ;
   fgets(command, 1024, stdin) ;
   * strchr(command, '\n') = '\0' ;
   while (strcmp(command, "stand") != 0) {
     if (strcmp(command, "exit") == 0 || strcmp(command, "surrender") == 0) return money - bet ; // surrender
     hit(&p, &d) ;
+    super_sleep(300);
     if (find_min_sum(&p) > 21) {
       printf("You have BUSTED!\n") ;
-      printf("***************************************************************************\n") ;
-      printf("***************************************************************************\n") ;
+      system("clear");
       printf("Dealer: \n") ;
       displayCards(&dealer) ;
-      printf("Smallest Sum: %d\nLargest Sum: %d\n",find_min_sum(&dealer), find_max_sum(&dealer)) ;
+      printf("Sum: %d\n", sum(find_min_sum(&dealer), find_max_sum(&dealer)) );
       printf("\nYou:\n") ;
       displayCards(&p) ;
       printf("Sum: %d\n\nYou have BUSTED!\n", find_min_sum(&p)) ;
       money -= bet ;
       return money ;
     }
-    printf("***************************************************************************\n") ;
-    printf("***************************************************************************\n") ;
+    system("clear");
     printf("Dealer:\n") ;
     beginDisplayDealer(&dealer) ;
     printf("\n") ;
     printf("Your cards: \n") ;
     displayCards(&p) ;
-    printf("Smallest Sum: %d\nLargest Sum: %d\n", find_min_sum(&p), find_max_sum(&p)) ;
+    printf("Sum: %d\n", sum(find_min_sum(&p), find_max_sum(&p))) ;
     printf("\nType in what you want to do (hit or stand): ") ;
 		fgets(command, 1024, stdin) ;
 		* strchr(command, '\n') = '\0' ;
   }
-  printf("***************************************************************************\n") ;
-  printf("***************************************************************************\n") ;
+  system("clear");
+
   printf("Dealer:\n") ;
   //after hitting it is the dealers turn to hit
   displayCards(&dealer) ;
-  printf("Smallest Sum: %d\nLargest Sum: %d\n", find_min_sum(&dealer), find_max_sum(&dealer)) ;
+  printf("Sum: %d\n", sum (find_min_sum(&dealer), find_max_sum(&dealer)) );
   printf("Your cards: \n") ;
   displayCards(&p) ;
-  printf("Smallest Sum: %d\nLargest Sum: %d\n", find_min_sum(&p), find_max_sum(&p)) ;
-  while (dealer.max_sum < 16) {
+  printf("Sum: %d\n", sum(find_min_sum(&p), find_max_sum(&p)) );
+  while (sum(find_min_sum(&dealer), find_max_sum(&dealer)) < sum(find_min_sum(&p), find_max_sum(&p))) {
     hit(&dealer, &d) ; // just make it hit if the sum is less than 16
-    printf("***************************************************************************\n") ;
-    printf("***************************************************************************\n") ;
+    super_sleep(300); 
+    system("clear");
     printf("Dealer:\n") ;
     displayCards(&dealer) ;
-    printf("Smallest Sum: %d\nLargest Sum: %d\n", find_min_sum(&dealer), find_max_sum(&dealer)) ;
+    printf("Sum: %d\n", sum(find_min_sum(&dealer), find_max_sum(&dealer)) );
+    printf("Your cards: \n") ;
+    displayCards(&p) ;
+    printf("Sum: %d\n", sum(find_min_sum(&p), find_max_sum(&p)) );
   }
   if (find_min_sum(&dealer) > 21) {
     printf("The dealer has busted.\n") ;
@@ -492,6 +502,7 @@ int blackjack(int money) {
 			}
     }
     else if (strcmp(command, "play") == 0) {
+      srand(time(0));
       money = play_blackjack(money, bet) ;
     }
 		else {

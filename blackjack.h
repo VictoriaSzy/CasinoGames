@@ -3,6 +3,8 @@
 #include <string.h>
 #include <time.h>
 
+#include "roulette.h"
+
 // typedef structs mean that we won't have to type struct countless times in the return types of the functions
 
 // this is the struct for a single card
