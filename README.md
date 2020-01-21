@@ -2,6 +2,20 @@
 Team Members: Victoria Szymanowski & Theodore Wu    </br>
 Systems Period 10    </br>
 
+## Description
+We created a casino that has the following games: blackjack, slot machines, and roulette!
+
+## Will I need any libraries?
+Nope! 
+
+## Instructions:
+```
+make
+make run
+```
+You will be taken to the home screen. Further directions will appear, but here's an overview of how to use the home screen:
+- 
+
 ## DevLogs:
 :goat: - Victoria's doing<br/>
 :squirrel: - Theodore's doing<br/>
