@@ -174,12 +174,6 @@ N  18                  088 N
   */
   //char bp = {' ', 'O'};
   int bw[52] = {0,0,1,1,1,1,2,2,2,3,3,4,4,4,5,6,7,7,8,9,10,10,10,11,11,12,12,12,13,13,13,13,14,14,14,15,15,16,16,17,18,19,19,20,21,22,22,22,22,23,23,0};
-  char bp(int num, int ballpos){
-  	if (num == ballpos){
-  		return 'O';
-  	}
-  	return ' ';
-  }
   //bp(,b)
 	for (int s = 0; s < spins * 52+1; s++){
 		system("clear");
@@ -252,11 +246,12 @@ N  18                  088 N
 
 	return money;
 }
-/*int main(int argc, char const *argv[])
-{
-	roulette_game(500);
-	return 0;
-}*/
+char bp(int num, int ballpos){
+	if (num == ballpos){
+		return 'O';
+	}
+	return ' ';
+}
 int roulette_game(int money) {
   printf("It's time to play with the Slot Machines!\n") ;
   printf("Match three numbers to win the amount you bet or more.\n") ;
