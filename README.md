@@ -29,7 +29,8 @@ When you make run, you enter the home screen of our casino. You can type in the 
   - You can leave our casino by typing in exit.
 
 ## What we didn't get to
-Unfortunately, we spent a lot of time planning how to organize Blackjack and the other games
+Unfortunately, we spent a lot of time planning how to organize Blackjack and the other games on the home screen. We didn't get to doing networking with blackjack so blackjack is only for one player.
+<img src="https://media.giphy.com/media/cjzkCDL3jZTZB6ki1B/giphy.gif" width="1500" height="500"/>
 
 ## DevLogs:
 :goat: - Victoria's doing<br/>
@@ -64,16 +65,18 @@ Unfortunately, we spent a lot of time planning how to organize Blackjack and the
 :squirrel: I found a way to implement a slot machine animation without sdl. Mostly because I couldn't download sdl. (but I could download viruses apparently)   <br/>
 ### 1/16/2020
 :goat: I resolved the issues with blackjack and displaying the card. The pointers are now pointing where they need to and the correct information is being stored.   <br/>
-:squirrel: added betting to the slot machines, and made sure you cannot bet negative money or bet when you do not have money.
+:squirrel: added betting to the slot machines, and made sure you cannot bet negative money or bet when you do not have money. <br/>
 ### 1/17/2020
 :goat: I finally found the issue with making the deck by using many, many print statements. I worked on printing a general card and have printCard(card c) but it's not completely working yet.    <br/>
-:squirrel: attached slot machines such that it can run in main.
+:squirrel: attached slot machines such that it can run in main. <br/>
 ### 1/18/2020
 :goat: I found a really cool way to display the cards but it's going to take a while since each card has a different amount of hearts, spades, clubs, or diamonds on it. I started working on the continous blackjack game function.    <br/>
-:squirrel: started working on roulette, on things such as the animation and functionality it must have
+:squirrel: started working on roulette, on things such as the animation and functionality it must have <br/>
 ### 1/19/2020
 :goat: I finished the display card functions but they are so long. I think I need to think of a different approach. I also got rid of some warnings when compiling and added a possible ending to main.c.     <br/>
-:squirrel: finished up roulette, making sure the ball's end position correctly corresponds to the number next to it. 
+:squirrel: finished up roulette, making sure the ball's end position correctly corresponds to the number next to it. <br/>
 ### 1/20/2020
 :goat: I rewrote the display card methods and now they don't take up 400 lines or something. I finally got it to work correctly with main and the makefile so blackjack is ready to play!! WOOHOO!! <br>
-:squirrel: made the game loop for blackjack. tidied up main.c to work with all the games. changed display for blackjack
+:squirrel: made the game loop for blackjack. tidied up main.c to work with all the games. changed display for blackjack <br/>
+
+<img src="https://media.giphy.com/media/26gsfdArwyEnXnDGw/source.gif" width="1500" height="500"/>
