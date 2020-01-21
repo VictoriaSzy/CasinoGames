@@ -45,9 +45,6 @@ void transferCard(player * p, deck * d) {
   d->cardsInDeck-- ;
   p->cardsInHand++ ;
 }
-void fold(player * p, deck * d) {
-
-}
 void deal(player * p, deck * d) {
   transferCard(p,d) ;
   transferCard(p,d) ;
@@ -56,7 +53,6 @@ void deal(player * p, deck * d) {
   p->max_sum = find_max_sum(p) ;
   //printf("The max sum: %d\n", p->max_sum);
 }
-
 void hit(player * p, deck * d) {
   transferCard(p,d) ;
 }
@@ -78,7 +74,6 @@ deck makedeck() {
   d.cardsInDeck = 52 ;
   return d ;
 }
-
 void shuffle(deck * d) {
   for (int i = 0; i < 100 ; i++) {
 		int x, y ;
@@ -92,10 +87,6 @@ void shuffle(deck * d) {
 
 // ~~~~~~~~~~~~~~~~ PRINTING FUNCTIONS ~~~~~~~~~~~~~~~~
 // source of ascii art: https://www.asciiart.eu/miscellaneous/playing-cards
-/*i did system clear like what u did in slots. then display the 2 cards originally and the new one right next to them
-are you sure it works?
-I was thinking of a bunch of strings the length of the card and just adding more to the strings if you hit
-let me test it in the main now */
 // this will display only the second dealer's card
 void beginDisplayDealer(player * dealer) {
   int num = dealer->hand[1].value ;
@@ -471,16 +462,6 @@ int play_blackjack(int money, int bet) {
   return money ;
 }
 
-int super_sleep(int milliseconds) {
-	struct timespec{
-    int tv_sec;
-    int tv_nsec;
-  } ts ;
-  ts.tv_sec = milliseconds / 1000 ;
-  ts.tv_nsec = (milliseconds % 1000) * 1000000 ;
-  return nanosleep(&ts, NULL) ;
-}
-
 int blackjack(int money) {
   char command[128] = "help" ;
   int bet = 10 ;
@@ -522,22 +503,9 @@ int blackjack(int money) {
 		*strchr(command, '\n') = '\0' ;
 	}
 	printf("\nYou are leaving Blackjack!\n") ;
-	//super_sleep(800) ;
   return money ;
 }
 int main(int argc, char const * argv[]) {
-  /*player p ;
-  p.cardsInHand = 0 ;
-  player dealer ;
-  dealer.cardsInHand = 0 ;
-  deck d = makedeck() ;
-  shuffle(&d) ;
-  deal(&dealer, &d) ;
-  deal(&p, &d) ;
-  printf("Dealer:\n") ;
-  beginDisplayDealer(&dealer) ;
-  printf("\n") ;
-  displayCards(&p) ;*/
   blackjack(100) ;
   return 0 ;
 }
