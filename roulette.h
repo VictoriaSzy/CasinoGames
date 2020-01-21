@@ -19,8 +19,11 @@
 
 #define WHEEL {'!', '@', '#', '$', '%', '^', '&', '*', '7', '?'}
 #include "slots.h"
+typedef struct{
+	int nums[26];//24 + even and odd
+	int amounts[26];
+}bets;
 
-char * spin() ;
-int is_win() ;
+int roulette_spin(int money) ;
 int roulette_game(int money);
 //int super_sleep(int milliseconds);

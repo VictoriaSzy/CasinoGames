@@ -33,7 +33,7 @@ int main(int argc, char const *argv[]) {
 		//the game loop
 		if (strcmp(command, "blackjack") == 0){
 			//play blackjack
-			money = blackjack(money) ;
+			//money = blackjack(money) ;
 			home_message(money) ;
 		}
 		else if (strcmp(command, "slots") == 0){
@@ -43,6 +43,8 @@ int main(int argc, char const *argv[]) {
 		}
 		else if (strcmp(command, "roulette") == 0){
 			//play roulette
+			money = roulette_game(money);
+			home_message(money);
 		}
 		else if (strcmp(command, "atm") == 0){
 			system("clear");
