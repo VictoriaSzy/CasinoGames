@@ -485,7 +485,7 @@ int blackjack(int money) {
   int bet = 10 ;
   deck d = makedeck() ;
 	while (strcmp(command, "exit") != 0) {
-    super_sleep(1000);
+    //super_sleep(1000);
     system("clear");
     if (strcmp(command, "help") == 0) {
 			printf("\nType commands to play. The commands are: \n") ;
