@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 // typedef structs mean that we won't have to type struct countless times in the return types of the functions
 
@@ -36,19 +37,6 @@ deck makedeck() ;
 void fold(player * p, deck * d) ;
 void hit(player *p, deck * d) ;
 int blackjack(int money) ;
-void displayCard(int num) ;
-void displayAce(int suit) ;
-void displayJack(int suit) ;
-void displayQueen(int suit) ;
-void displayKing(int suit) ;
-void display2(int suit) ;
-void display3(int suit) ;
-void display4(int suit) ;
-void display5(int suit) ;
-void display6(int suit) ;
-void display7(int suit) ;
-void display8(int suit) ;
-void display9(int suit) ;
-void display10(int suit) ;
-
-int play_blackjack(int money);
+void displayCards(player * p) ;
+void beginDisplayDealer(player * dealer) ;
+int play_blackjack(int money, int bet) ;
