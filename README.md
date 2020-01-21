@@ -14,20 +14,20 @@ make
 make run
 ```
 ## But how can I play?
-When you make run, you enter the home screen of our casino. The amount of money you have and the highest amount of money you have ever had is recorded there (thanks to a file)! You can type in the following:   <br/>
+When you make run, you enter the home screen of our casino. You start with an initial $500 You can type in the following:   <br/>
 - blackjack
   - Directions will appear and once you have read them, you can type play to get started! You and the dealer will be dealt 2 cards each. You can only see one of the dealer's cards. Type hit or stand to try to get the sum of your cards as close as possible to 21 without going over 21 (or "busting"). If you type in surrender or exit, you can leave that game.
 - slots
   - Directions will appear and you can go straight to the slot machines or change your bet. Type play to get to the slot machines.
 - roulette
-  - Type play to get to where you can choose numbers where the ball will land. You can enter the number you want to bet on or even vs odd and then enter the amount you want to bet. Once you have finished making your bets, you can type spin and you'll see where the ball lands.
+  - Type play. You will then choose the numbers where you think the ball will land. You can enter the number you want to bet on or even vs odd and then enter the amount you want to bet. Once you have finished making your bets, you can type spin and you'll see where the ball lands. (type "spin" into the prompt that asks for what you want to bet on)
 - atm
-  - You can get more money here!
+  - You can get refill your money to the initial $500
 - help 
   - This will provide you with the commands that you can type in the home screen.
 - exit
   - You can leave our casino by typing in exit.
-
+*please note that you only update your highscore when you return to the main casino page
 ## What we didn't get to
 Unfortunately, we spent a lot of time planning how to organize Blackjack and the other games on the home screen. We didn't get to doing networking with blackjack so blackjack is only for one player.
 <img src="https://media.giphy.com/media/cjzkCDL3jZTZB6ki1B/giphy.gif" width="1500" height="500"/>
@@ -77,6 +77,6 @@ Unfortunately, we spent a lot of time planning how to organize Blackjack and the
 :squirrel: finished up roulette, making sure the ball's end position correctly corresponds to the number next to it. <br/>
 ### 1/20/2020
 :goat: I rewrote the display card methods and now they don't take up 400 lines or something. I finally got it to work correctly with main and the makefile so blackjack is ready to play!! WOOHOO!! <br>
-:squirrel: made the game loop for blackjack. tidied up main.c to work with all the games. changed display for blackjack <br/>
+:squirrel: made the game loop for blackjack. tidied up main.c to work with all the games. changed display for blackjack. added highscores<br/>
 
 <img src="https://media.giphy.com/media/26gsfdArwyEnXnDGw/source.gif" width="1500" height="500"/>
