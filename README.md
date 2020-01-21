@@ -14,7 +14,7 @@ make
 make run
 ```
 ## But how can I play?
-When you make run, you enter the home screen of our casino. You can type in the following:   <br/>
+When you make run, you enter the home screen of our casino. The amount of money you have and the highest amount of money you have ever had is recorded there (thanks to a file)! You can type in the following:   <br/>
 - blackjack
   - Directions will appear and once you have read them, you can type play to get started! You and the dealer will be dealt 2 cards each. You can only see one of the dealer's cards. Type hit or stand to try to get the sum of your cards as close as possible to 21 without going over 21 (or "busting"). If you type in surrender or exit, you can leave that game.
 - slots
