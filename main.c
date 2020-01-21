@@ -13,27 +13,27 @@ SDL_Texture * load_cards_texture(SDL_Renderer * renderer) {
 } */
 void home_message(int money){
 	system("clear");
-	printf("You've entered the casino floor!!\n");
-	printf("You currently have $%i dollars\n", money);
-	printf("Possible commands are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
+	printf("You've entered the casino floor!!\n") ;
+	printf("You currently have $%i dollars\n", money) ;
+	printf("Possible commands are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n") ;
 }
 
 int main(int argc, char const *argv[]) {
-	//printf("Welcome to the casino!!\n");
-	char command[128] = "";
+	printf("Welcome to the casino!!\n");
+	char command[128] = "" ;
 	int money = 500;
 	while (strcmp(command, "exit") != 0){
 		system("clear");
 		printf("Welcome to the casino!!\n");
 		printf("Possible places to go to are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 
-		printf("\nYou currently have $%i dollars\n", money);
+		printf("\nYou currently have $%i dollars\n", money) ;
 
 		//printf("%i\n", strcmp(command, "exit"));
 		//the game loop
 		if (strcmp(command, "blackjack") == 0){
 			//play blackjack
-			//money = blackjack(money) ;
+			money = blackjack(money) ;
 			home_message(money) ;
 		}
 		else if (strcmp(command, "slots") == 0){
@@ -82,20 +82,10 @@ int main(int argc, char const *argv[]) {
 			printf("You entered: \"%s\"\n", command) ;
 			printf("You did not enter a valid command. Possible commands are:  \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n") ;
 		}
-		printf("\nYou decide to do over to the: ") ;
+		printf("\nEnter what you want to do (blackjack, slots, roulette, atm, help, exit): ") ;
 		fgets(command, 1024, stdin) ;
 		*strchr(command, '\n') = '\0' ;
 	}
 	printf("\nYou have left the casino. Thank you for your time.\n") ;
-  /*printf("__      __\n") ;
-	printf(" _\    /_ \n") ;
-  printf("\ _\  /_ /\n") ;
-  printf("\ _\/_ /_ _\n") ;
-  printf("|_____/_/ /|\n") ;
-  printf("(  (_)__)J-)\n") ;
-  printf("(  /`.,   /") ;
-  printf(" \/  ;   /") ;
-    | === |dwb\n", );
-		*/
 	return 0 ;
 }
