@@ -22,9 +22,9 @@ int main(int argc, char const *argv[]) {
 	//printf("Welcome to the casino!!\n");
 	char command[128] = "" ;
 	int money = 500;
-	int y = open("test.txt", O_WRONLY | O_CREAT, 0644);
-	if (write(y, 500, sizeof(int)) == -1) printf("NOT GOOD. We can't write to the file!") ;
-	close(y) ;
+	int f = open("highscore", O_WRONLY | O_CREAT, 0644);
+	write(f, &money, sizeof(int));
+	close(f) ;
 	while (strcmp(command, "exit") != 0){
 		system("clear");
 		printf("	                        88     \n                                \"\"   \n ,adPPYba, ,adPPYYba, ,adPPYba, 88 8b,dPPYba,   ,adPPYba,   \na8\"     \"\" \"\"     `Y8 I8[    \"\" 88 88P'   `\"8a a8\"     \"8a  \n8b         ,adPPPPP88  `\"Y8ba,  88 88       88 8b       d8  \n\"8a,   ,aa 88,    ,88 aa    ]8I 88 88       88 \"8a,   ,a8\"  \n `\"Ybbd8\"\' `\"8bbdP\"Y8 `\"YbbdP\"\' 88 88       88  `\"YbbdP\"\' \n");
@@ -32,19 +32,6 @@ int main(int argc, char const *argv[]) {
 		printf("Possible places to go to are: \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n");
 
 		printf("\nYou currently have $%i dollars\n", money) ;
-
-		y = open("test.txt", O_RDONLY) ;
-		int m = 0 ;
-		if (read(y, m, sizeof(int)) == -1) printf("NOT GOOD. We can't read the file!!") ;
-		close(y) ;
-		if (money > m) {
-			y = open("test.txt", O_WRONLY | O_CREAT, 0644);
-			if (write(y, money, sizeof(int)) == -1) printf("NOT GOOD. We can't write to the file!") ;
-			close(y) ;
-			printf("The most amount of money you have had is: %i\n", money) ;
-		}
-		printf("The most amount of money you have had is: %i\n", m) ;
-
 
 		//printf("%i\n", strcmp(command, "exit"));
 		//the game loop
@@ -98,6 +85,17 @@ int main(int argc, char const *argv[]) {
 			system("clear") ;
 			printf("You entered: \"%s\"\n", command) ;
 			printf("You did not enter a valid command. Possible commands are:  \n\t-blackjack\n\t-slots\n\t-roulette\n\t-atm\n\t-help\n\t-exit\n") ;
+		}
+		f = open("highscore", O_RDONLY) ;
+		int m = 0 ;
+		read(f, &m, sizeof(int));
+		close(f) ;
+		printf("Currently, the most amount of money you have ever had is: %i (highscore)\n", m) ;
+		if (money > m) {
+			f = open("highscore", O_WRONLY, 0644);
+			if (write(f, &money, sizeof(int)) == -1) printf("NOT GOOD. We can't write to the file!") ;
+			close(f) ;
+			printf("Congratulations your new highscore is: %i\n", money) ;
 		}
 		printf("\nEnter what you want to do (blackjack, slots, roulette, atm, help, exit): ") ;
 		fgets(command, 1024, stdin) ;

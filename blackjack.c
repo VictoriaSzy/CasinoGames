@@ -387,7 +387,7 @@ int play_blackjack(int money, int bet, deck * dk) {
   while (strcmp(command, "stand") != 0) {
     if (strcmp(command, "exit") == 0 || strcmp(command, "surrender") == 0) return money - bet ; // surrender
     hit(&p, &d) ;
-    //super_sleep(300);
+    super_sleep(300);
     if (find_min_sum(&p) > 21) {
       printf("You have BUSTED!\n") ;
       system("clear");
@@ -422,7 +422,7 @@ int play_blackjack(int money, int bet, deck * dk) {
   printf("Sum: %d\n", sum(find_min_sum(&p), find_max_sum(&p)) );
   while (sum(find_min_sum(&dealer), find_max_sum(&dealer)) < sum(find_min_sum(&p), find_max_sum(&p))) {
     hit(&dealer, &d) ; // just make it hit if the sum is less than 16
-    //super_sleep(300); 
+    super_sleep(300); 
     system("clear");
     printf("Dealer:\n") ;
     displayCards(&dealer) ;
@@ -485,7 +485,7 @@ int blackjack(int money) {
   int bet = 10 ;
   deck d = makedeck() ;
 	while (strcmp(command, "exit") != 0) {
-    //super_sleep(1000);
+    super_sleep(1000);
     system("clear");
     if (strcmp(command, "help") == 0) {
 			printf("\nType commands to play. The commands are: \n") ;
