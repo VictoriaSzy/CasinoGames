@@ -8,11 +8,28 @@ We created a casino that has the following games: blackjack, slot machines, and 
 ## Will I need any libraries?
 Nope! 
 
-## Instructions:
+## Instructions for running:
 ```
 make
 make run
 ```
+## But how can I play?
+When you make run, you enter the home screen of our casino. You can type in the following:   <br/>
+- blackjack
+  - Directions will appear and once you have read them, you can type play to get started! You and the dealer will be dealt 2 cards each. You can only see one of the dealer's cards. Type hit or stand to try to get the sum of your cards as close as possible to 21 without going over 21 (or "busting"). If you type in surrender or exit, you can leave that game.
+- slots
+  - Directions will appear and you can go straight to the slot machines or change your bet. Type play to get to the slot machines.
+- roulette
+  - Type play to get to where you can choose numbers where the ball will land. You can enter the number you want to bet on or even vs odd and then enter the amount you want to bet. Once you have finished making your bets, you can type spin and you'll see where the ball lands.
+- atm
+  - You can get more money here!
+- help 
+  - This will provide you with the commands that you can type in the home screen.
+- exit
+  - You can leave our casino by typing in exit.
+
+## What we didn't get to
+Unfortunately, we spent a lot of time planning how to organize Blackjack and the other games
 
 ## DevLogs:
 :goat: - Victoria's doing<br/>
